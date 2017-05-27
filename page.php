@@ -16,55 +16,8 @@
     <link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="./assets/css/demo.css" rel="stylesheet" />
+    <link href="./assets/css/dropdown.css" rel="stylesheet" />
 </head>
-<style>
-/* Style The Dropdown Button */
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px;
-    font-size: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 8px 20px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-</style>
 
 <body class="index-page">
     <!-- Navbar -->
@@ -87,7 +40,7 @@
                             <i class="now-ui-icons objects_globe"></i>
                             <p><font size="2">เกี่ยวกับมหาวิทยาลัย</font></p>
                               <div class="dropdown-content">
-                                <a href="1.php">ตรวจสอบมหาวิทยาลัย</a>
+                                <a href="page.php">ตรวจสอบมหาวิทยาลัย</a>
                                 <a href="2.php">ตรวจสอบรายวิชา</a>
                               </div>
                         </a>

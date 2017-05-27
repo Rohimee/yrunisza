@@ -16,6 +16,7 @@
     <link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="./assets/css/demo.css" rel="stylesheet" />
+    <link href="./assets/css/dropdown.css" rel="stylesheet" />
 </head>
 
 <body class="index-page">
@@ -34,16 +35,32 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="page.php">
-                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                            <p>Page Test</p>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">
+                            <i class="now-ui-icons objects_globe"></i>
+                            <p><font size="2">เกี่ยวกับมหาวิทยาลัย</font></p>
+                              <div class="dropdown-content">
+                                <a href="page.php">ตรวจสอบมหาวิทยาลัย</a>
+                                <a href="2.php">ตรวจสอบรายวิชา</a>
+                              </div>
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">
+                            <i class="now-ui-icons users_circle-08"></i>
+                            <p>Page Test</p>
+                              <div class="dropdown-content">
+                                <a href="1.php">Link 1</a>
+                                <a href="2.php">Link 2</a>
+                                <a href="3.php">Link 3</a>
+                              </div>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="./documentation/tutorial-components.html" target="_blank">
+                        <a class="nav-link" href="#">
                             <i class="now-ui-icons files_paper"></i>
-                            <p>Components</p>
+                            <p><font size="2">เทียบโอน</font></p>
                         </a>
                     </li>
                     <li class="nav-item">
