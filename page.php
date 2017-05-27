@@ -17,10 +17,58 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="./assets/css/demo.css" rel="stylesheet" />
 </head>
+<style>
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
 
 <body class="index-page">
     <!-- Navbar -->
-    <nav class="navbar navbar-toggleable-md bg-info fixed-top navbar-info" color-on-scroll="500">
+    <nav class="navbar navbar-toggleable-md bg-info fixed-top navbar-info">
         <div class="container">
             <div class="navbar-translate">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,16 +82,32 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="page.php">
-                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                            <p>Page Test</p>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">
+                            <i class="now-ui-icons objects_globe"></i>
+                            <p><font size="2">เกี่ยวกับมหาวิทยาลัย</font></p>
+                              <div class="dropdown-content">
+                                <a href="1.php">ตรวจสอบมหาวิทยาลัย</a>
+                                <a href="2.php">ตรวจสอบรายวิชา</a>
+                              </div>
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">
+                            <i class="now-ui-icons users_circle-08"></i>
+                            <p>Page Test</p>
+                              <div class="dropdown-content">
+                                <a href="1.php">Link 1</a>
+                                <a href="2.php">Link 2</a>
+                                <a href="3.php">Link 3</a>
+                              </div>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="./documentation/tutorial-components.html" target="_blank">
+                        <a class="nav-link" href="#">
                             <i class="now-ui-icons files_paper"></i>
-                            <p>Components</p>
+                            <p><font size="2">เทียบโอน</font></p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -75,7 +139,7 @@
         <div class="main"><br>
             <!-- Typography -->
             <!-- Start class="section" -->
-            <div class="section" style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
+            <div class="section">
                 <div class="container">
                     <h3 class="title">Typography</h3>
                     <div id="typography">
@@ -96,7 +160,16 @@
                     </div>
                 </div>
             </div>
-            <!-- Start class="main" -->
+            <!-- Start class="section" -->
+            <div class="section section-signup" style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
+                <div class="container">
+                    <div class="row">
+                      <div class="col text-center">
+                          <a href="examples/login-page.html" class="btn btn-simple btn-round btn-white btn-lg" target="_blank">View Login Page</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- End class="main" -->
         <!-- Start class="footer" -->
