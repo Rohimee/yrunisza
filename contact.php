@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="icon" href="./assets/img/favicon.png" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Now Ui Kit by Creative Tim</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -35,32 +34,36 @@
             <!-- Start class="section" -->
             <div class="section">
                 <div class="container">
-                    <h3 class="title">Typography</h3>
+                    <h3 class="title">ติดต่อเรา</h3><hr><br><br><br>
                     <div id="typography">
-                        <div class="row">
-                            <div class="col-md-12">
-                                ...
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-50"></div>
-                    <div id="images">
-                        <h4>Images</h4>
-                        <div class="row">
-                            ...
-                        </div>
-                        <div class="row">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Start class="section" -->
-            <div class="section section-signup" style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
-                <div class="container">
-                    <div class="row">
-                      <div class="col text-center">
-                          <a href="examples/login-page.html" class="btn btn-simple btn-round btn-white btn-lg" target="_blank">View Login Page</a>
-                      </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <font size="3">
+                                      <b>มหาวิทยาลัยราชภัฏยะลา-มรย. (Yala Rajabhat University-YRU)</b> <br>
+                                      <b>สถานที่ตั้ง : </b>133 ถ.เทศบาล 3 ต.สะเตงนอก อ.เมือง จ.ยะลา รหัสไปรศนีย์ 95000 <br>
+                                      <b>โทรศัพท์ : </b>0-7329-9699 <br>
+                                      <b>โทรสาร : </b>0-7329-9610, 0-7329-9611, 0-7329-9601, 0-7329-9602 <br>
+                                      <b>Email: </b>webmaster@yru.ac.th <br><br><br>
+                                  </font>
+                                  <div class="gallery">
+                                      <img src="assets/img/yru.jpg" title="มหาวิทยาลัยราชภัฏยะลา (YRU)" class="img-responsive" />
+                                  </div> <br><br>
+                              </div>
+                              <div class="col-md-6">
+                                  <font size="3">
+                                      <b>Universiti Sultan Zainal Abidin (Kampus Gong Badak)</b> <br>
+                                      <b>Gong Badak </b><br>
+                                      <b>21300 Kuala Terengganu</b><br>
+                                      <b>Terengganu Darul Iman MALAYSIA</b><br>
+                                      <b>Tel    : </b> 09-668 8888 <b>Faks : </b>09-666 2566 <br>
+                                      <b>Email : </b>pro@unisza.edu.my<br><br>
+                                  </font>
+                                  <div class="gallery">
+                                      <img src="assets/img/unisza.jpg" title="Universiti Sultan Zainal Abidin (UniSZA)" class="img-responsive" />
+                                  </div> <br><br>
+                              </div>
+
+                          </div>
                     </div>
                 </div>
             </div>
@@ -70,28 +73,38 @@
         <footer class="footer" data-background-color="black">
             <div class="container">
                 <nav>
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://presentation.creative-tim.com">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
-                                MIT License
-                            </a>
-                        </li>
-                    </ul>
+                  <ul>
+                      <li>
+                          <a href="index.php">
+                              หน้าหลัก
+                          </a>
+                      </li>
+                      <li>
+                          <a href="check_university.php">
+                              ตรวจสอบมหาวิทยาลัย
+                          </a>
+                      </li>
+                      <li>
+                          <a href="check_course.php">
+                              ตรวจสอบรายวิชา
+                          </a>
+                      </li>
+                      <li>
+                          <a href="step_transfer.php">
+                              ขั้นตอนการเทียบโอน
+                          </a>
+                      </li>
+                      <li>
+                          <a href="transfer.php">
+                              เทียบโอนหน่วยกิจ
+                          </a>
+                      </li>
+                      <li>
+                          <a href="contact.php">
+                              ติดต่อเรา
+                          </a>
+                      </li>
+                  </ul>
                 </nav>
                 <div class="copyright">
                     YRUNISZA
