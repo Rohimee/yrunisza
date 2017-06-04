@@ -114,7 +114,7 @@
                     <h4>มหาวิทยาลัยราชภัฏยะลา (YRU) ร่วมกับ Universiti Sultan Zainal Abidin (UniSZA) </h4>
                 </div>
             </div>
-        </div><br>
+        </div><br><br><br>
 
         </div>
         <!-- Start class="footer" -->

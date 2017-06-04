@@ -70,7 +70,7 @@
         </div>
         <!-- End class="main" -->
         <!-- Start class="footer" -->
-        <footer class="footer" data-background-color="black">
+        <footer class="footer">
             <div class="container">
                 <nav>
                   <ul>

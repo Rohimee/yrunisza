@@ -54,8 +54,57 @@
           <div class="row">
               ...
           </div>
-        </form>
-        </div><br><br><br><br>
+        </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <!-- Start class="footer" -->
+        <footer class="footer">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.php">
+                                หน้าหลัก
+                            </a>
+                        </li>
+                        <li>
+                            <a href="check_university.php">
+                                ตรวจสอบมหาวิทยาลัย
+                            </a>
+                        </li>
+                        <li>
+                            <a href="check_course.php">
+                                ตรวจสอบรายวิชา
+                            </a>
+                        </li>
+                        <li>
+                            <a href="step_transfer.php">
+                                ขั้นตอนการเทียบโอน
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.php">
+                                เทียบโอนหน่วยกิจ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.php">
+                                ติดต่อเรา
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                    YRUNISZA
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>. All rights reserved.
+                    <a href="http://www.yru.ac.th/" target="_blank">YRU</a>.
+                    <a href="https://www.unisza.edu.my/index.php?lang=ms" target="_blank">UNISZA</a>.
+                </div>
+            </div>
+        </footer>
+        <!-- End class="footer" -->
+        </div><br><br><br>
       </div>
     </div>
 
