@@ -1,8 +1,3 @@
-<?php
-require_once("libs/Db.php");
-$objDb = new Db();
-$db = $objDb->database;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,12 +59,11 @@ $db = $objDb->database;
                   <select class="form-control" id="field_u_id" name="field_u_id" required="require">
                     <option value="">-- เลือกมหาวิทยาลัย --</option>
                     <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
-                      $query->execute(); //ประมวลผลคำสั่ง sql
-                      if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                      while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
-                    <?php }} ?>
+                        require_once ("connectdb.php");
+                        $query = mysql_query ("SELECT * FROM university_tbl");
+                        while($viewcat=mysql_fetch_array($query)){ ?>
+                        <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -79,12 +73,11 @@ $db = $objDb->database;
                   <select class="form-control" id="field_u1_id" name="field_u1_id" required="require">
                     <option value="">-- เลือกมหาวิทยาลัย --</option>
                     <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
-                      $query->execute(); //ประมวลผลคำสั่ง sql
-                      if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                      while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
-                    <?php }} ?>
+                        require_once ("connectdb.php");
+                        $query = mysql_query ("SELECT * FROM university_tbl");
+                        while($viewcat=mysql_fetch_array($query)){ ?>
+                        <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -134,82 +127,92 @@ $db = $objDb->database;
         </form>
         <?php
           if($_GET["Action"] == "Save"){
+              require_once 'connectdb.php';
+              $a = $_POST['field_s_id'];
+              $b = $_POST['field_s1_id'];
+              $select = "SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ";
+              $result = mysql_query($select) or die ("Error Query [".$select."]");
+              $objResult = mysql_fetch_array($result);
+                $a = $objResult['s_id'] . " , ";
+                $b = $objResult['s_name'] . " , ";
+                $c = $objResult['s_explanation_th'] . " , ";
+                $d = $objResult['s_explanation_en'] . "<br>";
 
-              $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ");
-              $query->execute(); //ประมวลผลคำสั่ง sql
-              if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
-              $objResult = $query->fetch(PDO::FETCH_ASSOC);
-                $a = $objResult['s_id'];
-                $b = $objResult['s_name'];
-                $c = $objResult['s_explanation_th'];
-                $d = $objResult['s_explanation_en'];
+                $select = "SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s1_id']." ";
+                $result = mysql_query($select) or die ("Error Query [".$select."]");
+                $objResult = mysql_fetch_array($result);
+                  $e = $objResult['s_id'] . " , ";
+                  $f = $objResult['s_name'] . " , ";
+                  $g = $objResult['s_explanation_th'] . " , ";
+                  $h = $objResult['s_explanation_en'] . "<br>";
 
-                $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s1_id']." ");
-                $query->execute(); //ประมวลผลคำสั่ง sql
-                if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
-                $objResult = $query->fetch(PDO::FETCH_ASSOC);
-                  $e = $objResult['s_id'];
-                  $f = $objResult['s_name'];
-                  $g = $objResult['s_explanation_th'];
-                  $h = $objResult['s_explanation_en'];
+                  /*echo "<br>";
+                  echo $a;
+                  echo $b;
+                  echo $c;
+                  echo $d;
+                  echo "<br>";
+                  echo $e;
+                  echo $f;
+                  echo $g;
+                  echo $h;*/
 
-              $number = similar_text($c, $g, $percent);
-              echo "<br>";
-              if ($percent==100) {?>
-                <br>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-success loading" role="progressbar" aria-valuenow="<?php echo (int)$percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (int)$percent."%";?>">
-                    <?php echo (int)$percent."%"; ?>
-                  </div>
-                </div>
-                <br>
-                <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
-              <?php
-            }elseif ($percent>=80) {?>
-              <br>
-              <div class="progress">
-                <div class="progress-bar progress-bar-success loading" role="progressbar" aria-valuenow="<?php echo (int)$percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (int)$percent."%";?>">
-                  <?php echo (int)$percent."%"; ?>
-                </div>
-              </div>
-              <br>
-              <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
-              <?php
-            }elseif ($percent>=75) {?>
-              <br>
-              <div class="progress">
-                <div class="progress-bar progress-bar-success loading" role="progressbar" aria-valuenow="<?php echo (int)$percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (int)$percent."%";?>">
-                  <?php echo (int)$percent."%"; ?>
-                </div>
-              </div>
-              <br>
-              <center>ปานกลาง <img src="./assets/img/warning.png" width='20px' height='20px'></center>
-              <?php
-            }else {?>
-              <br>
-              <div class="progress">
-                <div class="progress-bar progress-bar-success loading" role="progressbar" aria-valuenow="<?php echo (int)$percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (int)$percent."%";?>">
-                  <?php echo (int)$percent."%"; ?>
-                </div>
-              </div>
-              <br>
-              <center>ไม่ผ่าน <img src="./assets/img/not.png" width='20px' height='20px'></center>
-              <?php
-              }
-            }
+                  if( $b == $f AND $c == $g ){ ?>
+                    <br>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success loading" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        100%
+                      </div>
+                    </div><br>
+                    <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
+                  <?php
+                  }else if($b != $f AND $c == $g) {
+                  ?>
+                    <br>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-warning loading" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                        50%
+                      </div>
+                    </div><br>
+                    <center>ปานกลาง <img src="./assets/img/warning.png" width='20px' height='20px'></center>
+                  <?php
+                  }else if($b == $f AND $c != $g) {
+                  ?>
+                    <br>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-warning loading" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                        50%
+                      </div>
+                    </div><br>
+                    <center>ปานกลาง <img src="./assets/img/warning.png" width='20px' height='20px'></center>
+                  <?php
+                  }else {
+                  ?>
+                    <br>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-danger loading" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; color:#000000;">
+                        0%
+                      </div>
+                    </div><br>
+                    <center>ไม่ผ่าน <img src="./assets/img/not.png" width='20px' height='20px'></center>
+                  <?php
+                  }
 
-            echo "<br><br>";
-            echo $a." , ";
-            echo $b."<br>";
-            echo $c."<br>";
-            echo $d;
-            echo "<br><br>";
-            echo $e." , ";
-            echo $f."<br>";
-            echo $g."<br>";
-            echo $h;
-        ?>
-        <br><br><br><br><br>
+              /*
+              echo $field_s_id ."<br>";
+              echo $field_s1_id ."<br>";
+              if( $field_s_id == $field_s1_id )
+              {
+                echo "ผ่าน";
+              }else if ($field_s_id <> $field_s1_id) {
+                {
+                  echo "ปานกลาง";
+                }
+              }else {
+                echo "ไม่ผ่าน";
+              }*/
+            }?>
+            <br><br><br><br><br>
         <!-- Start class="footer" -->
         <footer class="footer">
             <div class="container">

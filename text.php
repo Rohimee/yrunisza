@@ -26,156 +26,30 @@
 </head>
 
 <body class="index-page">
-    <?php require_once 'menu.php'; ?>
-    <!-- Start class="wrapper" -->
-    <div class="wrapper">
-      <!-- Start class="main" -->
-        <div class="main"><br>
-            <!-- Typography -->
-            <!-- Start class="section" -->
-            <div class="section">
-                <div class="container">
-                    <h3 class="title">เทียบโอนหน่วยกิต</h3><hr><br><br><br>
-                    <div id="typography">
-                      <form action="#" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>มหาวิทยาลัย</label>
-                                <select class="form-control" name="" required="require">
-                                  <option value="">-- เลือกมหาวิทยาลัย --</option>
-                                  <option value="">1</option>
-                                  <option value="">2</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>มหาวิทยาลัย</label>
-                                <select class="form-control" name="" required="require">
-                                  <option value="">-- เลือกมหาวิทยาลัย --</option>
-                                  <option value="">1</option>
-                                  <option value="">2</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>หลักสูตร</label>
-                                <select class="form-control" name="" required="require">
-                                  <option value="">-- เลือกหลักสูตร --</option>
-                                  <option value="">1</option>
-                                  <option value="">2</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>หลักสูตร</label>
-                                <select class="form-control" name="" required="require">
-                                  <option value="">-- เลือกหลักสูตร --</option>
-                                  <option value="">1</option>
-                                  <option value="">2</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>วิชา</label>
-                                <select class="form-control" name="" required="require">
-                                  <option value="">-- เลือกวิชา --</option>
-                                  <option value="">1</option>
-                                  <option value="">2</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>วิชา</label>
-                                <select class="form-control" name="" required="require">
-                                  <option value="">-- เลือกวิชา --</option>
-                                  <option value="">1</option>
-                                  <option value="">2</option>
-                                </select>
-                              </div>
-                            </div><br><br><br><br>
-                            <div class="col text-center">
-                              <button class="btn btn-success btn-round" type="submit">
-                                  <i class="now-ui-icons gestures_tap-01"></i> ตรวจสอบ
-                              </button>
-                              <button class="btn btn-danger btn-round" type="reset">
-                                  <i class="now-ui-icons ui-1_simple-remove"></i> ยกเลิก
-                              </button>
-                            </div>
-                        </div>
-                      </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Start class="section" -->
-            <div class="section section-signup">
-                <div class="container">
-                    <div class="row">
-                      <div class="col text-center">
-                          ...
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End class="section" -->
-        </div>
-        <!-- End class="main" -->
-        <!-- Start class="footer" -->
-        <footer class="footer" data-background-color="black">
-            <div class="container">
-                <nav>
-                  <ul>
-                      <li>
-                          <a href="index.php">
-                              หน้าหลัก
-                          </a>
-                      </li>
-                      <li>
-                          <a href="check_university.php">
-                              ตรวจสอบมหาวิทยาลัย
-                          </a>
-                      </li>
-                      <li>
-                          <a href="check_course.php">
-                              ตรวจสอบรายวิชา
-                          </a>
-                      </li>
-                      <li>
-                          <a href="step_transfer.php">
-                              ขั้นตอนการเทียบโอน
-                          </a>
-                      </li>
-                      <li>
-                          <a href="transfer.php">
-                              เทียบโอนหน่วยกิจ
-                          </a>
-                      </li>
-                      <li>
-                          <a href="contact.php">
-                              ติดต่อเรา
-                          </a>
-                      </li>
-                  </ul>
-                </nav>
-                <div class="copyright">
-                    YRUNISZA
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>. All rights reserved.
-                    <a href="http://www.yru.ac.th/" target="_blank">YRU</a>.
-                    <a href="https://www.unisza.edu.my/index.php?lang=ms" target="_blank">UNISZA</a>.
-                </div>
-            </div>
-        </footer>
-        <!-- End class="footer" -->
-    </div>
-    <!-- End class="wrapper" -->
+    <?php
+      // $number1 = "0000";
+      // $numdb = "0000"; // ค่า string ใน db
+      // $numinput = strval($number1);//แปลงค่า input เป็นstring
+      //
+      // if(strlen($numdb) != strlen($numinput)){
+      //
+      // echo "ไม่เท่ากันจ้า";
+      // }else{
+      //
+      // echo "เท่ากันจ้า";
+      // }
+    ?>
+    <?php
+      $zero = "000";
+      $zeros = "000";
+      if( $zero === $zeros )
+      {
+        echo "x";
+      }else
+      {
+        echo "y";
+      }
+    ?>
 </body>
 <!--   Core JS Files   -->
 <script src="./assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>

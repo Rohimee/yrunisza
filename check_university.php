@@ -1,3 +1,8 @@
+<?php
+require_once("libs/Db.php");
+$objDb = new Db();
+$db = $objDb->database;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,22 +55,32 @@
     <div class="col-sm-9 col-md-10 affix-content">
       <div class="container"><br><br>
         <font size="5">ตรวจสอบมหาวิทยาลัย</font> <hr><br>
-        <form action="#" method="post">
           <div class="row">
             <table class="table table-bordered">
               <thead>
                   <tr>
-                      <th class="text-center" width="150">#</th>
+                      <th class="text-center" width="100">#</th>
                       <th class="text-center" width="">รายชื่อมหาวิทยาลัย</th>
                   </tr>
               </thead>
+              <tbody>
+              <?php
+              $query = $db->prepare("SELECT * FROM university_tbl");
+              $query->execute(); //ประมวลผลคำสั่ง sql
+              if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
+              while($row = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row
+              ?>
               <tr>
-                <td></td>
-                <td></td>
+                <td><center><?php echo $row['u_id']; ?></center></td>
+                <td><?php echo $row['u_name']; ?></td>
               </tr>
-            </table>
-          </div>
-        </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              <?php
+                  }
+                }
+              ?>
+            </tbody>
+          </table>
+          </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <!-- Start class="footer" -->
         <footer class="footer">
             <div class="container">

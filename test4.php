@@ -1,8 +1,3 @@
-<?php
-require_once("libs/Db.php");
-$objDb = new Db();
-$db = $objDb->database;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,12 +59,11 @@ $db = $objDb->database;
                   <select class="form-control" id="field_u_id" name="field_u_id" required="require">
                     <option value="">-- เลือกมหาวิทยาลัย --</option>
                     <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
-                      $query->execute(); //ประมวลผลคำสั่ง sql
-                      if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                      while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
-                    <?php }} ?>
+                        require_once ("connectdb.php");
+                        $query = mysql_query ("SELECT * FROM university_tbl");
+                        while($viewcat=mysql_fetch_array($query)){ ?>
+                        <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -79,12 +73,11 @@ $db = $objDb->database;
                   <select class="form-control" id="field_u1_id" name="field_u1_id" required="require">
                     <option value="">-- เลือกมหาวิทยาลัย --</option>
                     <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
-                      $query->execute(); //ประมวลผลคำสั่ง sql
-                      if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                      while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
-                    <?php }} ?>
+                        require_once ("connectdb.php");
+                        $query = mysql_query ("SELECT * FROM university_tbl");
+                        while($viewcat=mysql_fetch_array($query)){ ?>
+                        <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -134,27 +127,38 @@ $db = $objDb->database;
         </form>
         <?php
           if($_GET["Action"] == "Save"){
-
-              $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ");
-              $query->execute(); //ประมวลผลคำสั่ง sql
-              if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
-              $objResult = $query->fetch(PDO::FETCH_ASSOC);
+              require_once 'connectdb.php';
+              $a = $_POST['field_s_id'];
+              $b = $_POST['field_s1_id'];
+              $select = "SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ";
+              $result = mysql_query($select) or die ("Error Query [".$select."]");
+              $objResult = mysql_fetch_array($result);
                 $a = $objResult['s_id'];
                 $b = $objResult['s_name'];
                 $c = $objResult['s_explanation_th'];
                 $d = $objResult['s_explanation_en'];
 
-                $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s1_id']." ");
-                $query->execute(); //ประมวลผลคำสั่ง sql
-                if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
-                $objResult = $query->fetch(PDO::FETCH_ASSOC);
+                $select = "SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s1_id']." ";
+                $result = mysql_query($select) or die ("Error Query [".$select."]");
+                $objResult = mysql_fetch_array($result);
                   $e = $objResult['s_id'];
                   $f = $objResult['s_name'];
                   $g = $objResult['s_explanation_th'];
                   $h = $objResult['s_explanation_en'];
 
+                  echo "<br>";
+                  echo $a." , ";
+                  echo $b."<br>";
+                  echo $c."<br>";
+                  echo $d;
+                  echo "<br><br>";
+                  echo $e." , ";
+                  echo $f."<br>";
+                  echo $g."<br>";
+                  echo $h;
+
               $number = similar_text($c, $g, $percent);
-              echo "<br>";
+              echo "<br><hr>";
               if ($percent==100) {?>
                 <br>
                 <div class="progress">
@@ -197,17 +201,6 @@ $db = $objDb->database;
               <?php
               }
             }
-
-            echo "<br><br>";
-            echo $a." , ";
-            echo $b."<br>";
-            echo $c."<br>";
-            echo $d;
-            echo "<br><br>";
-            echo $e." , ";
-            echo $f."<br>";
-            echo $g."<br>";
-            echo $h;
         ?>
         <br><br><br><br><br>
         <!-- Start class="footer" -->

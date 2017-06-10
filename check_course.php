@@ -1,3 +1,8 @@
+<?php
+require_once("libs/Db.php");
+$objDb = new Db();
+$db = $objDb->database;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,17 +60,33 @@
             <table class="table table-bordered">
               <thead>
                   <tr>
-                      <th class="text-center" width="150">#</th>
+                      <th class="text-center" width="100">#</th>
                       <th class="text-center" width="">ชื่อรายวิชา</th>
+                      <th class="text-center" width="">สาขา</th>
+                      <th class="text-center" width="">มหาวิทยาลัย</th>
                   </tr>
               </thead>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
+                <tbody>
+                  <?php
+                    $query = $db->prepare("SELECT * FROM subject_tbl NATURAL JOIN major_tbl NATURAL JOIN university_tbl");
+                    $query->execute(); //ประมวลผลคำสั่ง sql
+                    if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
+                    while($row = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row
+                    ?>
+                    <tr>
+                      <td><center><?php echo $row['s_id']; ?></center></td>
+                      <td><?php echo $row['s_name']; ?></td>
+                      <td><?php echo $row['m_name']; ?></td>
+                      <td><?php echo $row['u_name']; ?></td>
+                    </tr>
+                  <?php
+                      }
+                    }
+                  ?>
+              </tbody>
             </table>
           </div>
-        </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <!-- Start class="footer" -->
         <footer class="footer">
             <div class="container">
