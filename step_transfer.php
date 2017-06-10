@@ -43,6 +43,11 @@
                             <p><font color="black" size="2">เทียบโอนหน่วยกิต</font></p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transfer1.php">
+                            <p><font color="black" size="2">เทียบคำอธิบายรายวิชา</font></p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
           </div>

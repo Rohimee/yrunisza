@@ -42,6 +42,7 @@
                           <div class="dropdown-content">
                             <a href="step_transfer.php">ขั้นตอนการเทียบโอน</a>
                             <a href="transfer.php">เทียบโอนหน่วยกิจ</a>
+                            <a href="transfer1.php">เทียบคำอธิบายรายวิชา</a>
                           </div>
                     </a>
                 </li>

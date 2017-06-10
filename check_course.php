@@ -54,36 +54,21 @@ $db = $objDb->database;
       </div>
     <div class="col-sm-9 col-md-10 affix-content">
       <div class="container"><br><br>
-        <font size="5">ตรวจสอบรายวิชา</font> <hr><br>
+        <font size="5">ตรวจสอบรายวิชา</font> <hr>
+        <select class="form-control" id="field_u_id" name="field_u_id" required="require">
+          <option value="">-- เลือกมหาวิทยาลัย --</option>
+          <?php
+            $query = $db->prepare("SELECT * FROM university_tbl");
+            $query->execute(); //ประมวลผลคำสั่ง sql
+            if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
+            while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
+            <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+          <?php }} ?>
+        </select><br>
         <form action="#" method="post">
           <div class="row">
-            <table class="table table-bordered">
-              <thead>
-                  <tr>
-                      <th class="text-center" width="100">#</th>
-                      <th class="text-center" width="">ชื่อรายวิชา</th>
-                      <th class="text-center" width="">สาขา</th>
-                      <th class="text-center" width="">มหาวิทยาลัย</th>
-                  </tr>
-              </thead>
-                <tbody>
-                  <?php
-                    $query = $db->prepare("SELECT * FROM subject_tbl NATURAL JOIN major_tbl NATURAL JOIN university_tbl");
-                    $query->execute(); //ประมวลผลคำสั่ง sql
-                    if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                    while($row = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row
-                    ?>
-                    <tr>
-                      <td><center><?php echo $row['s_id']; ?></center></td>
-                      <td><?php echo $row['s_name']; ?></td>
-                      <td><?php echo $row['m_name']; ?></td>
-                      <td><?php echo $row['u_name']; ?></td>
-                    </tr>
-                  <?php
-                      }
-                    }
-                  ?>
-              </tbody>
+            <table class="table table-bordered"  id="field_s_id">
+              
             </table>
           </div>
         </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -167,6 +152,20 @@ $db = $objDb->database;
             }, 1000);
         }
     }
+</script>
+<script type="text/javascript">
+ $('#field_u_id').change(function() {
+            var aaa=$(this).val()
+            $.ajax({
+
+                    type: 'GET',
+                    data: {field_u_id:aaa},
+                    url: 'ajax_course.php',
+                    success: function(data) {
+                            $('#field_s_id').html(data);
+                    }
+            });
+    });
 </script>
 
 </html>

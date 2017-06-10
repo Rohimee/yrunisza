@@ -45,12 +45,12 @@ $db = $objDb->database;
                             <p><font color="black" size="2">ขั้นตอนการเทียบโอน</font></p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="transfer.php">
                             <p><font color="black" size="2">เทียบโอนหน่วยกิต</font></p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="transfer1.php">
                             <p><font color="black" size="2">เทียบคำอธิบายรายวิชา</font></p>
                         </a>
@@ -62,8 +62,14 @@ $db = $objDb->database;
     <div class="col-sm-9 col-md-10 affix-content">
       <div class="container"><br><br>
         <font size="5">เทียบโอนหน่วยกิต</font> <hr><br>
-        <form action="transfer.php?Action=Save" method="post">
+        <form action="transfer1.php?Action=Save" method="post">
           <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <label>คำอธิบายรายวิชา</label>
+                  <textarea calss="form-control" name="field_s_explanation_th" rows="9" cols="58" required="require"></textarea>
+                </div>
+              </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>มหาวิทยาลัย</label>
@@ -78,39 +84,12 @@ $db = $objDb->database;
                     <?php }} ?>
                   </select>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>มหาวิทยาลัย</label>
-                  <select class="form-control" id="field_u1_id" name="field_u1_id" required="require">
-                    <option value="">-- เลือกมหาวิทยาลัย --</option>
-                    <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
-                      $query->execute(); //ประมวลผลคำสั่ง sql
-                      if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                      while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
-                    <?php }} ?>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
                 <div class="form-group">
                   <label>หลักสูตร</label>
                   <select class="form-control" id="field_m_id" name="field_m_id" required="require">
                     <option value="">-- เลือกหลักสูตร --</option>
                   </select>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>หลักสูตร</label>
-                  <select class="form-control" id="field_m1_id" name="field_m1_id" required="require">
-                    <option value="">-- เลือกหลักสูตร --</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
                 <div class="form-group">
                   <label>วิชา</label>
                   <select class="form-control" id="field_s_id" name="field_s_id" required="require">
@@ -118,16 +97,8 @@ $db = $objDb->database;
                   </select>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>วิชา</label>
-                  <select class="form-control" id="field_s1_id" name="field_s1_id" required="require">
-                    <option value="">-- เลือกวิชา --</option>
-                  </select>
-                </div>
-              </div>
 
-              <br><br><br><br><br>
+              <br><br><br><br><br><br><br><br><br><br><br><br>
               <div class="col text-center">
                 <button class="btn btn-success btn-round" type="submit">
                     <i class="now-ui-icons gestures_tap-01"></i> ตรวจสอบ
@@ -140,7 +111,7 @@ $db = $objDb->database;
         </form>
         <?php
           if($_GET["Action"] == "Save"){
-
+              $aa = $_POST['field_s_explanation_th'];
               $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ");
               $query->execute(); //ประมวลผลคำสั่ง sql
               if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
@@ -150,16 +121,7 @@ $db = $objDb->database;
                 $c = $objResult['s_explanation_th'];
                 $d = $objResult['s_explanation_en'];
 
-                $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s1_id']." ");
-                $query->execute(); //ประมวลผลคำสั่ง sql
-                if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
-                $objResult = $query->fetch(PDO::FETCH_ASSOC);
-                  $e = $objResult['s_id'];
-                  $f = $objResult['s_name'];
-                  $g = $objResult['s_explanation_th'];
-                  $h = $objResult['s_explanation_en'];
-
-              $number = similar_text($c, $g, $percent);
+              $number = similar_text($aa, $c, $percent);
               echo "<br>";
               if ($percent==100) {?>
                 <br>
@@ -222,10 +184,7 @@ $db = $objDb->database;
             echo $c."<br>";
             echo $d;
             echo "<br><br>";
-            echo $e." , ";
-            echo $f."<br>";
-            echo $g."<br>";
-            echo $h;
+            echo $aa;
         ?>
         <br><br><br><br><br>
         <!-- Start class="footer" -->
@@ -332,32 +291,6 @@ $db = $objDb->database;
                        url: 'ajax.php',
                        success: function(data) {
                                $('#field_s_id').html(data);
-                       }
-               });
-       });
-</script>
-<script type="text/javascript">
- $('#field_u1_id').change(function() {
-            var xxx=$(this).val()
-            $.ajax({
-
-                    type: 'GET',
-                    data: {field_u1_id:xxx},
-                    url: 'ajax1.php',
-                    success: function(data) {
-                            $('#field_m1_id').html(data);
-                    }
-            });
-    });
-    $('#field_m1_id').change(function() {
-               var yyy=$(this).val()
-               $.ajax({
-
-                       type: 'GET',
-                       data: {field_m1_id:yyy},
-                       url: 'ajax1.php',
-                       success: function(data) {
-                               $('#field_s1_id').html(data);
                        }
                });
        });

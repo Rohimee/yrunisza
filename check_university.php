@@ -67,14 +67,16 @@ $db = $objDb->database;
               <?php
               $query = $db->prepare("SELECT * FROM university_tbl");
               $query->execute(); //ประมวลผลคำสั่ง sql
+              $i=1;
               if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
               while($row = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row
               ?>
               <tr>
-                <td><center><?php echo $row['u_id']; ?></center></td>
+                <td><center><?php echo $i; ?></center></td>
                 <td><?php echo $row['u_name']; ?></td>
               </tr>
               <?php
+                $i++;
                   }
                 }
               ?>
