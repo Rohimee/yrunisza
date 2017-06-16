@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <link rel="icon" href="./assets/img/favicon.png" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Now Ui Kit by Creative Tim</title>
+    <title>ติดต่อเรา</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -32,7 +32,7 @@
         <div class="main"><br>
             <!-- Typography -->
             <!-- Start class="section" -->
-            <div class="section">
+            <div class="section" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 650px;">
                 <div class="container">
                     <h3 class="title">ติดต่อเรา</h3><hr><br><br><br>
                     <div id="typography">
@@ -70,18 +70,16 @@
         </div>
         <!-- End class="main" -->
         <!-- Start class="footer" -->
-        <footer class="footer">
+        <footer class="footer" data-background-color="black">
             <div class="container">
                 <nav>
                   <ul>
                       <li>
-                          <a href="index.php">
-                              หน้าหลัก
-                          </a>
+                          <img src="./assets/img/favicon.png" width="30" height="25"/>
                       </li>
                       <li>
-                          <a href="check_university.php">
-                              ตรวจสอบมหาวิทยาลัย
+                          <a href="index.php">
+                              หน้าหลัก
                           </a>
                       </li>
                       <li>

@@ -40,7 +40,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="transfer.php">
-                            <p><font color="black" size="2">เทียบโอนหน่วยกิต</font></p>
+                            <p><font color="black" size="2">เทียบโอนรายวิชา</font></p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -52,27 +52,46 @@
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content">
+    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 650px;">
       <div class="container"><br><br>
         <font size="5">ขั้นตอนการเทียบโอนหน่วยกิต</font> <hr><br>
-        <form action="#" method="post">
           <div class="row">
-              ...
+            <div class="form-group">
+              <label><b>เทียบโอนรายวิชา</b></label>
+              <img src="./assets/img/img1.png" width="1000" height="500"/>
+            </div><br>
+            <div class="form-group">
+              <label><b>ผลการเทียบโอน</b></label>
+              <img src="./assets/img/img2.png" width="1000" height="500"/>
+            </div><br>
+            <div class="form-group">
+              <label><b>เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชาในหลักสูตร</b></label>
+              <img src="./assets/img/img3.png" width="1000" height="500"/>
+            </div><br>
+            <div class="form-group">
+              <label><b>ผลการเทียบโอน</b></label>
+              <img src="./assets/img/img4.png" width="1000" height="500"/>
+            </div><br>
+            <div class="form-group">
+              <label><b>เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชา</b></label>
+              <img src="./assets/img/img5.png" width="1000" height="500"/>
+            </div><br>
+            <div class="form-group">
+              <label><b>ผลการเทียบโอน</b></label>
+              <img src="./assets/img/img6.png" width="1000" height="500"/>
+            </div>
           </div>
-        </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <!-- Start class="footer" -->
         <footer class="footer">
             <div class="container">
                 <nav>
                     <ul>
                         <li>
-                            <a href="index.php">
-                                หน้าหลัก
-                            </a>
+                            <img src="./assets/img/favicon.png" width="30" height="25"/>
                         </li>
                         <li>
-                            <a href="check_university.php">
-                                ตรวจสอบมหาวิทยาลัย
+                            <a href="index.php">
+                                หน้าหลัก
                             </a>
                         </li>
                         <li>

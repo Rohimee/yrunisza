@@ -53,14 +53,10 @@
                             </div>
                       </a>
                   </li>-->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link" href="#">
-                          <i class="now-ui-icons objects_globe"></i>
-                          <p><font size="2">เกี่ยวกับมหาวิทยาลัย</font></p>
-                            <div class="dropdown-content">
-                              <a href="check_university.php">ตรวจสอบมหาวิทยาลัย</a>
-                              <a href="check_course.php">ตรวจสอบรายวิชา</a>
-                            </div>
+                  <li class="nav-item">
+                      <a class="nav-link" href="check_course.php" rel="tooltip" title="ตรวจสอบรายวิชาที่สามารถเทียบโอน" data-placement="bottom">
+                          <i class="now-ui-icons education_paper"></i>
+                          <p><font size="2">ตรวจสอบรายวิชา</font></p>
                       </a>
                   </li>
                   <li class="nav-item dropdown">
@@ -69,7 +65,7 @@
                           <p><font size="2">เทียบโอน</font></p>
                             <div class="dropdown-content">
                               <a href="step_transfer.php">ขั้นตอนการเทียบโอน</a>
-                              <a href="transfer.php">เทียบโอนหน่วยกิจ</a>
+                              <a href="transfer.php">เทียบโอนรายวิชา</a>
                               <a href="transfer1.php">เทียบคำอธิบายรายวิชา</a>
                             </div>
                       </a>
@@ -106,7 +102,7 @@
 
       <div class="wrapper">
         <div class="page-header clear-filter" filter-color="orange">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.jpg');">
+            <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/bacground_yru.jpg');">
             </div>
             <div class="container">
                 <div class="content-center brand">
@@ -124,13 +120,11 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="index.php">
-                                หน้าหลัก
-                            </a>
+                            <img src="./assets/img/favicon.png" width="30" height="25"/>
                         </li>
                         <li>
-                            <a href="check_university.php">
-                                ตรวจสอบมหาวิทยาลัย
+                            <a href="index.php">
+                                หน้าหลัก
                             </a>
                         </li>
                         <li>

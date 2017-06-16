@@ -47,7 +47,7 @@ $db = $objDb->database;
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="transfer.php">
-                            <p><font color="black" size="2">เทียบโอนหน่วยกิต</font></p>
+                            <p><font color="black" size="2">เทียบโอนรายวิชา</font></p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -59,7 +59,7 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content">
+    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 610px;">
       <div class="container"><br><br>
         <font size="5">เทียบโอนหน่วยกิต</font> <hr><br>
         <form action="transfer.php?Action=Save" method="post">
@@ -67,14 +67,14 @@ $db = $objDb->database;
               <div class="col-md-6">
                 <div class="form-group">
                   <label>มหาวิทยาลัย</label>
-                  <select class="form-control" id="field_u_id" name="field_u_id" required="require">
+                  <select class="form-control" id="field_university_id" name="field_university_id" required="require">
                     <option value="">-- เลือกมหาวิทยาลัย --</option>
                     <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
+                      $query = $db->prepare("SELECT * FROM university");
                       $query->execute(); //ประมวลผลคำสั่ง sql
                       if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
                       while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+                      <option id="<?php echo $viewcat['university_id'];?>" value="<?php echo $viewcat['university_id'];?>"><?php echo $viewcat['university_name_th'];?></option>
                     <?php }} ?>
                   </select>
                 </div>
@@ -82,14 +82,14 @@ $db = $objDb->database;
               <div class="col-md-6">
                 <div class="form-group">
                   <label>มหาวิทยาลัย</label>
-                  <select class="form-control" id="field_u1_id" name="field_u1_id" required="require">
+                  <select class="form-control" id="field_university1_id" name="field_university1_id" required="require">
                     <option value="">-- เลือกมหาวิทยาลัย --</option>
                     <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
+                      $query = $db->prepare("SELECT * FROM university");
                       $query->execute(); //ประมวลผลคำสั่ง sql
                       if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
                       while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
+                      <option id="<?php echo $viewcat['university_id'];?>" value="<?php echo $viewcat['university_id'];?>"><?php echo $viewcat['university_name_th'];?></option>
                     <?php }} ?>
                   </select>
                 </div>
@@ -97,7 +97,7 @@ $db = $objDb->database;
               <div class="col-md-6">
                 <div class="form-group">
                   <label>หลักสูตร</label>
-                  <select class="form-control" id="field_m_id" name="field_m_id" required="require">
+                  <select class="form-control" id="field_course_id" name="field_course_id" required="require">
                     <option value="">-- เลือกหลักสูตร --</option>
                   </select>
                 </div>
@@ -105,7 +105,7 @@ $db = $objDb->database;
               <div class="col-md-6">
                 <div class="form-group">
                   <label>หลักสูตร</label>
-                  <select class="form-control" id="field_m1_id" name="field_m1_id" required="require">
+                  <select class="form-control" id="field_course1_id" name="field_course1_id" required="require">
                     <option value="">-- เลือกหลักสูตร --</option>
                   </select>
                 </div>
@@ -113,7 +113,7 @@ $db = $objDb->database;
               <div class="col-md-6">
                 <div class="form-group">
                   <label>วิชา</label>
-                  <select class="form-control" id="field_s_id" name="field_s_id" required="require">
+                  <select class="form-control" id="field_subject_id" name="field_subject_id" required="require">
                     <option value="">-- เลือกวิชา --</option>
                   </select>
                 </div>
@@ -121,7 +121,7 @@ $db = $objDb->database;
               <div class="col-md-6">
                 <div class="form-group">
                   <label>วิชา</label>
-                  <select class="form-control" id="field_s1_id" name="field_s1_id" required="require">
+                  <select class="form-control" id="field_subject1_id" name="field_subject1_id" required="require">
                     <option value="">-- เลือกวิชา --</option>
                   </select>
                 </div>
@@ -140,27 +140,28 @@ $db = $objDb->database;
         </form>
         <?php
           if($_GET["Action"] == "Save"){
+          echo "<hr>";
 
-              $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ");
+              $query = $db->prepare("SELECT * FROM subject WHERE course_id=".$_POST['field_course_id']." ");
               $query->execute(); //ประมวลผลคำสั่ง sql
               if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
               $objResult = $query->fetch(PDO::FETCH_ASSOC);
-                $a = $objResult['s_id'];
-                $b = $objResult['s_name'];
-                $c = $objResult['s_explanation_th'];
-                $d = $objResult['s_explanation_en'];
+                $a = $objResult['subject_id'];
+                $b = $objResult['subject_name_th'];
+                $c = $objResult['subject_description_th'];
+                $d = $objResult['subject_description_eng'];
 
-                $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s1_id']." ");
+                $query = $db->prepare("SELECT * FROM subject WHERE course_id=".$_POST['field_course1_id']." ");
                 $query->execute(); //ประมวลผลคำสั่ง sql
                 if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
                 $objResult = $query->fetch(PDO::FETCH_ASSOC);
-                  $e = $objResult['s_id'];
-                  $f = $objResult['s_name'];
-                  $g = $objResult['s_explanation_th'];
-                  $h = $objResult['s_explanation_en'];
+                  $e = $objResult['subject_id'];
+                  $f = $objResult['subject_name_th'];
+                  $g = $objResult['subject_description_th'];
+                  $h = $objResult['subject_description_eng'];
 
-              $number = similar_text($c, $g, $percent);
-              echo "<br>";
+              //$number = similar_text($c, $g, $percent);
+              $number = similar_text($d, $h, $percent);
               if ($percent==100) {?>
                 <br>
                 <div id="example-5" class="examples">
@@ -214,19 +215,58 @@ $db = $objDb->database;
               <center>ไม่ผ่าน <img src="./assets/img/not.png" width='20px' height='20px'></center>
               <?php
               }
+              ?>
+              <br>
+              <div class="card">
+                  <ul class="nav nav-tabs justify-content-center" role="tablist">
+                      <li class="nav-item">
+                          <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+                              <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> คำอธิบายรายวิชาที่ใช้เทียบ</font>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                              <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> คำอธิบายในหลักสูตรที่เทียบ</font>
+                          </a>
+                      </li>
+                  </ul><hr>
+                  <div class="card-block">
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                          <div class="tab-pane active" id="home" role="tabpanel">
+                              <p>
+                                <?php
+                                  echo "<b>วิชา</b> : ";
+                                  echo $b."<br><br>";
+                                  echo "<b>คำอธิบายรายวิชาภาษาท้องถิ่น</b><br>";
+                                  echo "&nbsp &nbsp &nbsp &nbsp".$c."<br><br>";
+                                  echo "<b>คำอธิบายรายวิชาภาษาอังกฤษ</b><br>";
+                                  echo "&nbsp &nbsp &nbsp &nbsp".$d;
+                                ?>
+                              </p>
+                          </div>
+                          <div class="tab-pane" id="profile" role="tabpanel">
+                              <p>
+                                <?php
+                                  echo "<b>วิชา</b> : ";
+                                  echo $f."<br><br>";
+                                  echo "<b>คำอธิบายรายวิชาภาษาท้องถิ่น</b><br>";
+                                  echo "&nbsp &nbsp &nbsp &nbsp".$g."<br><br>";
+                                  echo "<b>คำอธิบายรายวิชาภาษาอังกฤษ</b><br>";
+                                  echo "&nbsp &nbsp &nbsp &nbsp".$h;
+                                ?>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <?php
             }
 
-            echo "<br><br>";
-            echo $a." , ";
-            echo $b."<br>";
-            echo $c."<br>";
-            echo $d;
-            echo "<br><br>";
-            echo $e." , ";
-            echo $f."<br>";
-            echo $g."<br>";
-            echo $h;
+
         ?>
+
+
         <br><br><br><br><br>
         <!-- Start class="footer" -->
         <footer class="footer">
@@ -234,13 +274,11 @@ $db = $objDb->database;
                 <nav>
                     <ul>
                         <li>
-                            <a href="index.php">
-                                หน้าหลัก
-                            </a>
+                            <img src="./assets/img/favicon.png" width="30" height="25"/>
                         </li>
                         <li>
-                            <a href="check_university.php">
-                                ตรวจสอบมหาวิทยาลัย
+                            <a href="index.php">
+                                หน้าหลัก
                             </a>
                         </li>
                         <li>
@@ -311,53 +349,53 @@ $db = $objDb->database;
     }
 </script>
 <script type="text/javascript">
- $('#field_u_id').change(function() {
+ $('#field_university_id').change(function() {
             var aaa=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_u_id:aaa},
+                    data: {field_university_id:aaa},
                     url: 'ajax.php',
                     success: function(data) {
-                            $('#field_m_id').html(data);
+                            $('#field_course_id').html(data);
                     }
             });
     });
-    $('#field_m_id').change(function() {
+    $('#field_course_id').change(function() {
                var bbb=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_m_id:bbb},
+                       data: {field_course_id:bbb},
                        url: 'ajax.php',
                        success: function(data) {
-                               $('#field_s_id').html(data);
+                               $('#field_subject_id').html(data);
                        }
                });
        });
 </script>
 <script type="text/javascript">
- $('#field_u1_id').change(function() {
+ $('#field_university1_id').change(function() {
             var xxx=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_u1_id:xxx},
+                    data: {field_university1_id:xxx},
                     url: 'ajax1.php',
                     success: function(data) {
-                            $('#field_m1_id').html(data);
+                            $('#field_course1_id').html(data);
                     }
             });
     });
-    $('#field_m1_id').change(function() {
+    $('#field_course1_id').change(function() {
                var yyy=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_m1_id:yyy},
+                       data: {field_course1_id:yyy},
                        url: 'ajax1.php',
                        success: function(data) {
-                               $('#field_s1_id').html(data);
+                               $('#field_subject1_id').html(data);
                        }
                });
        });

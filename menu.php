@@ -25,14 +25,10 @@
                           </div>
                     </a>
                 </li>-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#">
-                        <i class="now-ui-icons objects_globe"></i>
-                        <p><font size="2">เกี่ยวกับมหาวิทยาลัย</font></p>
-                          <div class="dropdown-content">
-                            <a href="check_university.php">ตรวจสอบมหาวิทยาลัย</a>
-                            <a href="check_course.php">ตรวจสอบรายวิชา</a>
-                          </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="check_course.php" rel="tooltip" title="ตรวจสอบรายวิชาที่สามารถเทียบโอน" data-placement="bottom">
+                        <i class="now-ui-icons education_paper"></i>
+                        <p><font size="2">ตรวจสอบรายวิชา</font></p>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -41,7 +37,7 @@
                         <p><font size="2">เทียบโอน</font></p>
                           <div class="dropdown-content">
                             <a href="step_transfer.php">ขั้นตอนการเทียบโอน</a>
-                            <a href="transfer.php">เทียบโอนหน่วยกิจ</a>
+                            <a href="transfer.php">เทียบโอนรายวิชา</a>
                             <a href="transfer1.php">เทียบคำอธิบายรายวิชา</a>
                           </div>
                     </a>

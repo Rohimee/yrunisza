@@ -47,7 +47,7 @@ $db = $objDb->database;
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="transfer.php">
-                            <p><font color="black" size="2">เทียบโอนหน่วยกิต</font></p>
+                            <p><font color="black" size="2">เทียบโอนรายวิชา</font></p>
                         </a>
                     </li>
                     <li class="nav-item active">
@@ -59,186 +59,203 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content">
-      <div class="container"><br><br>
-        <font size="5">เทียบโอนหน่วยกิต</font> <hr><br>
-        <form action="transfer1.php?Action=Save" method="post">
-          <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <label>คำอธิบายรายวิชา</label>
-                  <textarea calss="form-control" name="field_s_explanation_th" rows="9" cols="58" required="require"></textarea>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>มหาวิทยาลัย</label>
-                  <select class="form-control" id="field_u_id" name="field_u_id" required="require">
-                    <option value="">-- เลือกมหาวิทยาลัย --</option>
-                    <?php
-                      $query = $db->prepare("SELECT * FROM university_tbl");
-                      $query->execute(); //ประมวลผลคำสั่ง sql
-                      if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
-                      while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
-                      <option id="<?php echo $viewcat['u_id'];?>" value="<?php echo $viewcat['u_id'];?>"><?php echo $viewcat['u_name'];?></option>
-                    <?php }} ?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>หลักสูตร</label>
-                  <select class="form-control" id="field_m_id" name="field_m_id" required="require">
-                    <option value="">-- เลือกหลักสูตร --</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>วิชา</label>
-                  <select class="form-control" id="field_s_id" name="field_s_id" required="require">
-                    <option value="">-- เลือกวิชา --</option>
-                  </select>
-                </div>
-              </div>
+    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 670px;">
+      <div class="container-fluid"><br>
+            <ul class="nav nav-tabs justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#transfer1" role="tab">
+                        <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> เทียบคำอธิบายรายวิชา กับ คำอธิบายในหลักสูตร</font>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                        <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชา</font>
+                    </a>
+                </li>
+            </ul>
+            <div class="card-block">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="transfer1" role="tabpanel">
+                      <font size="5">เทียบคำอธิบายรายวิชา กับ คำอธิบายในหลักสูตร</font> <hr><br>
+                      <form action="check_transfer.php?Action=Save" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="row">
+                                <label>คำอธิบายรายวิชา</label>
+                                <textarea calss="form-control" name="field_subject_description_en" rows="9" cols="58" required="require"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>มหาวิทยาลัย</label>
+                                <select class="form-control" id="field_university_id" name="field_university_id" required="require">
+                                  <option value="">-- เลือกมหาวิทยาลัย --</option>
+                                  <?php
+                                    $query = $db->prepare("SELECT * FROM university");
+                                    $query->execute(); //ประมวลผลคำสั่ง sql
+                                    if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
+                                    while($viewcat = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row?>
+                                    <option id="<?php echo $viewcat['university_id'];?>" value="<?php echo $viewcat['university_id'];?>"><?php echo $viewcat['university_name_th'];?></option>
+                                  <?php }} ?>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label>หลักสูตร</label>
+                                <select class="form-control" id="field_course_id" name="field_course_id" required="require">
+                                  <option value="">-- เลือกหลักสูตร --</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label>วิชา</label>
+                                <select class="form-control" id="field_subject_id" name="field_subject_id" required="require">
+                                  <option value="">-- เลือกวิชา --</option>
+                                </select>
+                              </div>
+                            </div>
 
-              <br><br><br><br><br><br><br><br><br><br><br><br>
-              <div class="col text-center">
-                <button class="btn btn-success btn-round" type="submit">
-                    <i class="now-ui-icons gestures_tap-01"></i> ตรวจสอบ
-                </button>
-                <button class="btn btn-danger btn-round" type="reset">
-                    <i class="now-ui-icons ui-1_simple-remove"></i> ยกเลิก
-                </button>
-              </div>
-          </div>
-        </form>
-        <?php
-          if($_GET["Action"] == "Save"){
-              $aa = $_POST['field_s_explanation_th'];
-              $query = $db->prepare("SELECT * FROM subject_tbl WHERE s_id=".$_POST['field_s_id']." ");
-              $query->execute(); //ประมวลผลคำสั่ง sql
-              if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
-              $objResult = $query->fetch(PDO::FETCH_ASSOC);
-                $a = $objResult['s_id'];
-                $b = $objResult['s_name'];
-                $c = $objResult['s_explanation_th'];
-                $d = $objResult['s_explanation_en'];
-
-              $number = similar_text($aa, $c, $percent);
-              echo "<br>";
-              if ($percent==100) {?>
-                <br>
-                <div id="example-5" class="examples">
-                <div class="cssProgress">
-                  <div class="progress2">
-                    <div class="cssProgress-bar cssProgress-success cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
-                      <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                            <br><br><br><br><br><br><br><br><br><br><br><br>
+                            <div class="col text-center">
+                              <button class="btn btn-success btn-round" type="submit">
+                                  <i class="now-ui-icons gestures_tap-01"></i> ตรวจสอบ
+                              </button>
+                              <button class="btn btn-danger btn-round" type="reset">
+                                  <i class="now-ui-icons ui-1_simple-remove"></i> ยกเลิก
+                              </button>
+                            </div>
+                        </div>
+                      </form>
+                      <br><br><br><br><br>
+                      <!-- Start class="footer" -->
+                      <footer class="footer">
+                          <div class="container">
+                              <nav>
+                                  <ul>
+                                      <li>
+                                          <img src="./assets/img/favicon.png" width="30" height="25"/>
+                                      </li>
+                                      <li>
+                                          <a href="index.php">
+                                              หน้าหลัก
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="check_course.php">
+                                              ตรวจสอบรายวิชา
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="step_transfer.php">
+                                              ขั้นตอนการเทียบโอน
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="transfer.php">
+                                              เทียบโอนหน่วยกิจ
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="contact.php">
+                                              ติดต่อเรา
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </nav>
+                              <div class="copyright">
+                                  YRUNISZA
+                                  &copy;
+                                  <script>
+                                      document.write(new Date().getFullYear())
+                                  </script>. All rights reserved.
+                                  <a href="http://www.yru.ac.th/" target="_blank">YRU</a>.
+                                  <a href="https://www.unisza.edu.my/index.php?lang=ms" target="_blank">UNISZA</a>.
+                              </div>
+                          </div>
+                      </footer>
+                      <!-- End class="footer" -->
                     </div>
-                  </div>
-                </div>
-                </div><!-- @end #example-5 -->
-                <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
-              <?php
-            }elseif ($percent>=80) {?>
-              <br>
-              <div id="example-5" class="examples">
-              <div class="cssProgress">
-                <div class="progress2">
-                  <div class="cssProgress-bar cssProgress-success cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
-                    <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
-                  </div>
-                </div>
-              </div>
-              </div><!-- @end #example-5 -->
-              <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
-              <?php
-            }elseif ($percent>=75) {?>
-              <br>
-              <div id="example-5" class="examples">
-              <div class="cssProgress">
-                <div class="progress2">
-                  <div class="cssProgress-bar cssProgress-warning cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
-                    <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
-                  </div>
-                </div>
-              </div>
-              </div><!-- @end #example-5 -->
-              <center>ปานกลาง <img src="./assets/img/warning.png" width='20px' height='20px'></center>
-              <?php
-            }else {?>
-              <br>
-              <div id="example-5" class="examples">
-              <div class="cssProgress">
-                <div class="progress2">
-                  <div class="cssProgress-bar cssProgress-danger cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
-                    <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
-                  </div>
-                </div>
-              </div>
-              </div><!-- @end #example-5 -->
-              <center>ไม่ผ่าน <img src="./assets/img/not.png" width='20px' height='20px'></center>
-              <?php
-              }
-            }
+                    <div class="tab-pane" id="profile" role="tabpanel">
+                      <font size="5">เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชา</font> <hr><br>
+                      <form action="check_transfer.php?Action=Save1" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="row">
+                                <label>คำอธิบายรายวิชา</label>
+                                <textarea calss="form-control" name="field_subject_description_en1" rows="9" cols="58" required="require"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="row">
+                                <label>คำอธิบายรายวิชา</label>
+                                <textarea calss="form-control" name="field_subject_description_en2" rows="9" cols="58" required="require"></textarea>
+                              </div>
+                            </div>
+                            <br><br><br><br><br><br><br><br><br><br><br><br>
+                            <div class="col text-center">
+                              <button class="btn btn-success btn-round" type="submit">
+                                  <i class="now-ui-icons gestures_tap-01"></i> ตรวจสอบ
+                              </button>
+                              <button class="btn btn-danger btn-round" type="reset">
+                                  <i class="now-ui-icons ui-1_simple-remove"></i> ยกเลิก
+                              </button>
+                            </div>
+                        </div>
+                      </form>
 
-            echo "<br><br>";
-            echo $a." , ";
-            echo $b."<br>";
-            echo $c."<br>";
-            echo $d;
-            echo "<br><br>";
-            echo $aa;
-        ?>
-        <br><br><br><br><br>
-        <!-- Start class="footer" -->
-        <footer class="footer">
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="index.php">
-                                หน้าหลัก
-                            </a>
-                        </li>
-                        <li>
-                            <a href="check_university.php">
-                                ตรวจสอบมหาวิทยาลัย
-                            </a>
-                        </li>
-                        <li>
-                            <a href="check_course.php">
-                                ตรวจสอบรายวิชา
-                            </a>
-                        </li>
-                        <li>
-                            <a href="step_transfer.php">
-                                ขั้นตอนการเทียบโอน
-                            </a>
-                        </li>
-                        <li>
-                            <a href="transfer.php">
-                                เทียบโอนหน่วยกิจ
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.php">
-                                ติดต่อเรา
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                    YRUNISZA
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>. All rights reserved.
-                    <a href="http://www.yru.ac.th/" target="_blank">YRU</a>.
-                    <a href="https://www.unisza.edu.my/index.php?lang=ms" target="_blank">UNISZA</a>.
+                      <br><br><br><br><br>
+                      <!-- Start class="footer" -->
+                      <footer class="footer">
+                          <div class="container">
+                              <nav>
+                                  <ul>
+                                      <li>
+                                          <img src="./assets/img/favicon.png" width="30" height="25"/>
+                                      </li>
+                                      <li>
+                                          <a href="index.php">
+                                              หน้าหลัก
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="check_course.php">
+                                              ตรวจสอบรายวิชา
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="step_transfer.php">
+                                              ขั้นตอนการเทียบโอน
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="transfer.php">
+                                              เทียบโอนหน่วยกิจ
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="contact.php">
+                                              ติดต่อเรา
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </nav>
+                              <div class="copyright">
+                                  YRUNISZA
+                                  &copy;
+                                  <script>
+                                      document.write(new Date().getFullYear())
+                                  </script>. All rights reserved.
+                                  <a href="http://www.yru.ac.th/" target="_blank">YRU</a>.
+                                  <a href="https://www.unisza.edu.my/index.php?lang=ms" target="_blank">UNISZA</a>.
+                              </div>
+                          </div>
+                      </footer>
+                      <!-- End class="footer" -->
+                    </div>
                 </div>
             </div>
-        </footer>
-        <!-- End class="footer" -->
-        </div><br><br><br>
-      </div>
+      </div><br><br><br>
     </div>
+  </div>
 
 </body>
 <!--   Core JS Files   -->
@@ -270,27 +287,53 @@ $db = $objDb->database;
     }
 </script>
 <script type="text/javascript">
- $('#field_u_id').change(function() {
+ $('#field_university_id').change(function() {
             var aaa=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_u_id:aaa},
+                    data: {field_university_id:aaa},
                     url: 'ajax.php',
                     success: function(data) {
-                            $('#field_m_id').html(data);
+                            $('#field_course_id').html(data);
                     }
             });
     });
-    $('#field_m_id').change(function() {
+    $('#field_course_id').change(function() {
                var bbb=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_m_id:bbb},
+                       data: {field_course_id:bbb},
                        url: 'ajax.php',
                        success: function(data) {
-                               $('#field_s_id').html(data);
+                               $('#field_subject_id').html(data);
+                       }
+               });
+       });
+</script>
+<script type="text/javascript">
+ $('#field_university1_id').change(function() {
+            var xxx=$(this).val()
+            $.ajax({
+
+                    type: 'GET',
+                    data: {field_university1_id:xxx},
+                    url: 'ajax1.php',
+                    success: function(data) {
+                            $('#field_course1_id').html(data);
+                    }
+            });
+    });
+    $('#field_course1_id').change(function() {
+               var yyy=$(this).val()
+               $.ajax({
+
+                       type: 'GET',
+                       data: {field_course1_id:yyy},
+                       url: 'ajax1.php',
+                       success: function(data) {
+                               $('#field_subject1_id').html(data);
                        }
                });
        });

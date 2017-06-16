@@ -3,33 +3,33 @@ require_once("libs/Db.php");
 $objDb = new Db();
 $db = $objDb->database;
 
-if($_GET['field_u_id']) {
-		$field_u_id = isset($_GET['field_u_id']) ? $_GET['field_u_id'] : "";
+if($_GET['field_university_id']) {
+		$field_university_id = isset($_GET['field_university_id']) ? $_GET['field_university_id'] : "";
 
-		$query = $db->prepare("SELECT m.*,u.* FROM major_tbl m left join university_tbl u ON m.u_id = u.u_id WHERE m.u_id='{$field_u_id}'");
+		$query = $db->prepare("SELECT c.*,u.* FROM course c left join university u ON c.university_id = u.university_id WHERE c.university_id='{$field_university_id}'");
 		$query->execute(); //ประมวลผลคำสั่ง sql
     ?>
     <option value="">-- เลือกหลักสูตร --</option>
     <?php
 		if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
 		while($Result = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row
-			echo "<option value=\"" . $Result['m_id'] . "\">" . $Result['m_name'] ."</option>";
+			echo "<option value=\"" . $Result['course_id'] . "\">" . $Result['course_name_th'] ."</option>";
 			}
 		}else{
 			echo "<option value=\"\">ไม่มีหลักสูตรในมหาวิทยาลัยนี้</option>";
 		}
 
 	}else {
-		$field_m_id = isset($_GET['field_m_id']) ? $_GET['field_m_id'] : "";
+		$field_course_id = isset($_GET['field_course_id']) ? $_GET['field_course_id'] : "";
 
-		$query = $db->prepare("SELECT s.*,m.* FROM subject_tbl s left join major_tbl m ON s.m_id = m.m_id WHERE s.m_id='{$field_m_id}'");
+		$query = $db->prepare("SELECT s.*,c.* FROM subject s left join course c ON s.course_id = c.course_id WHERE s.course_id='{$field_course_id}'");
 		$query->execute(); //ประมวลผลคำสั่ง sql
     ?>
     <option value="">-- เลือกวิชา --</option>
     <?php
 		if($query->rowCount() > 0){ //rowCount เช็คจำนวนแถวที่ได้มา
 		while($Result = $query->fetch(PDO::FETCH_ASSOC)){ //ดึงข้อมูลแต่ละรอบใส่ใน $row
-				echo "<option value=\"" . $Result['s_id'] . "\">" . $Result['s_name'] ."</option>";
+				echo "<option value=\"" . $Result['subject_id'] . "\">" . $Result['subject_name_th'] ."</option>";
 			}
 		}else{
 			echo "<option value=\"\">ไม่มีวิชาในสาขานี้</option>";

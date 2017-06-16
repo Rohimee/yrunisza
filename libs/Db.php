@@ -12,7 +12,7 @@
     }
    private function connect(){
       $db_host = "localhost";
-      $db_name = "yru_db";
+      $db_name = "yrunisza";
       $db_user = "root";
       $db_pass = "";
 
