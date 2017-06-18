@@ -52,7 +52,7 @@
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 650px;">
+    <div class="col-sm-9 col-md-10 affix-content">
       <div class="container"><br><br>
         <font size="5">ขั้นตอนการเทียบโอนหน่วยกิต</font> <hr><br>
           <div class="row">

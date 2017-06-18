@@ -32,7 +32,7 @@
         <div class="main"><br>
             <!-- Typography -->
             <!-- Start class="section" -->
-            <div class="section" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 650px;">
+            <div class="section">
                 <div class="container">
                     <h3 class="title">ติดต่อเรา</h3><hr><br><br><br>
                     <div id="typography">

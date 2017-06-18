@@ -59,7 +59,7 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 650px;">
+    <div class="col-sm-9 col-md-10 affix-content">
       <div class="container-fluid"><br>
         <h4>การเทียบโอนรายวิชา</h4>
         <?php
@@ -194,43 +194,35 @@ $db = $objDb->database;
             }
         ?>
         <br>
-        <div class="card">
-            <ul class="nav nav-tabs justify-content-center" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                        <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> คำอธิบายรายวิชาที่ใช้เทียบ</font>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
-                        <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> คำอธิบายในหลักสูตรที่เทียบ</font>
-                    </a>
-                </li>
-            </ul><hr>
-            <div class="card-block">
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home" role="tabpanel">
-                        <p>
-                          <?php
-                            echo "<b>คำอธิบายรายวิชา</b><br>";
-                            echo "&nbsp &nbsp &nbsp &nbsp".$field_subject_description_th1;
-                            echo $aa;
-                          ?>
-                        </p>
-                    </div>
-                    <div class="tab-pane" id="profile" role="tabpanel">
-                        <p>
-                          <?php
-                            echo "<b>คำอธิบายรายวิชา</b><br>";
-                            echo "&nbsp &nbsp &nbsp &nbsp".$field_subject_description_th2;
-                            echo $d."<br>";
-                          ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div><br><br><br><br><br>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                      <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่ใช้เทียบ</th>
+                      <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่เทียบ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>
+                        <?php
+                          echo "<b>คำอธิบายรายวิชา</b><br>";
+                          echo "&nbsp &nbsp &nbsp &nbsp".$field_subject_description_th1;
+                          echo $aa;
+                        ?>
+                      </td>
+                      <td>
+                        <?php
+                          echo "<b>คำอธิบายรายวิชา</b><br>";
+                          echo "&nbsp &nbsp &nbsp &nbsp".$field_subject_description_th2;
+                          echo $d."<br>";
+                        ?>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <br><br><br><br><br><br><br><br><br>
 
         <!-- Start class="footer" -->
         <footer class="footer">

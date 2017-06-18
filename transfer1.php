@@ -59,7 +59,7 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 670px;">
+    <div class="col-sm-9 col-md-10 affix-content">
       <div class="container-fluid"><br>
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item">

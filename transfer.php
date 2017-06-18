@@ -59,7 +59,7 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
-    <div class="col-sm-9 col-md-10 affix-content" style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: top center; min-height: 610px;">
+    <div class="col-sm-9 col-md-10 affix-content">
       <div class="container"><br><br>
         <font size="5">เทียบโอนหน่วยกิต</font> <hr><br>
         <form action="transfer.php?Action=Save" method="post">
@@ -217,55 +217,43 @@ $db = $objDb->database;
               }
               ?>
               <br>
-              <div class="card">
-                  <ul class="nav nav-tabs justify-content-center" role="tablist">
-                      <li class="nav-item">
-                          <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                              <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> คำอธิบายรายวิชาที่ใช้เทียบ</font>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
-                              <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> คำอธิบายในหลักสูตรที่เทียบ</font>
-                          </a>
-                      </li>
-                  </ul><hr>
-                  <div class="card-block">
-                      <!-- Tab panes -->
-                      <div class="tab-content">
-                          <div class="tab-pane active" id="home" role="tabpanel">
-                              <p>
-                                <?php
-                                  echo "<b>วิชา</b> : ";
-                                  echo $b."<br><br>";
-                                  echo "<b>คำอธิบายรายวิชาภาษาท้องถิ่น</b><br>";
-                                  echo "&nbsp &nbsp &nbsp &nbsp".$c."<br><br>";
-                                  echo "<b>คำอธิบายรายวิชาภาษาอังกฤษ</b><br>";
-                                  echo "&nbsp &nbsp &nbsp &nbsp".$d;
-                                ?>
-                              </p>
-                          </div>
-                          <div class="tab-pane" id="profile" role="tabpanel">
-                              <p>
-                                <?php
-                                  echo "<b>วิชา</b> : ";
-                                  echo $f."<br><br>";
-                                  echo "<b>คำอธิบายรายวิชาภาษาท้องถิ่น</b><br>";
-                                  echo "&nbsp &nbsp &nbsp &nbsp".$g."<br><br>";
-                                  echo "<b>คำอธิบายรายวิชาภาษาอังกฤษ</b><br>";
-                                  echo "&nbsp &nbsp &nbsp &nbsp".$h;
-                                ?>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                            <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่ใช้เทียบ</th>
+                            <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่เทียบ</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>
+                              <?php
+                                echo "<br><b>วิชา</b> : ";
+                                echo $b."<br><br>";
+                                echo "<b>คำอธิบายรายวิชาภาษาท้องถิ่น</b><br>";
+                                echo "&nbsp &nbsp &nbsp &nbsp".$c."<br><br>";
+                                echo "<b>คำอธิบายรายวิชาภาษาอังกฤษ</b><br>";
+                                echo "&nbsp &nbsp &nbsp &nbsp".$d;
+                              ?>
+                            </td>
+                            <td>
+                              <?php
+                                echo "<br><b>วิชา</b> : ";
+                                echo $f."<br><br>";
+                                echo "<b>คำอธิบายรายวิชาภาษาท้องถิ่น</b><br>";
+                                echo "&nbsp &nbsp &nbsp &nbsp".$g."<br><br>";
+                                echo "<b>คำอธิบายรายวิชาภาษาอังกฤษ</b><br>";
+                                echo "&nbsp &nbsp &nbsp &nbsp".$h;
+                              ?>
+                            </td>
+                        </tr>
+                      </tbody>
+                  </table>
               </div>
               <?php
-            }
-
-
-        ?>
-
+                }
+              ?>
 
         <br><br><br><br><br>
         <!-- Start class="footer" -->
