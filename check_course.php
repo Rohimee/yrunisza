@@ -48,7 +48,7 @@ $db = $objDb->database;
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label>มหาวิทยาลัย</label>
-                                        <select class="form-control" id="field_university_id" name="field_university_id" required="require">
+                                        <select class="form-control" id="field_university_id1" name="field_university_id1" required="require">
                                           <option value="">-- เลือกมหาวิทยาลัย --</option>
                                           <?php
                                             $query = $db->prepare("SELECT * FROM university");
@@ -63,7 +63,7 @@ $db = $objDb->database;
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label>มหาวิทยาลัย</label>
-                                        <select class="form-control" id="field_university1_id" name="field_university1_id" required="require">
+                                        <select class="form-control" id="field_university_id2" name="field_university_id2" required="require">
                                           <option value="">-- เลือกมหาวิทยาลัย --</option>
                                           <?php
                                             $query = $db->prepare("SELECT * FROM university");
@@ -78,7 +78,7 @@ $db = $objDb->database;
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label>หลักสูตร</label>
-                                        <select class="form-control" id="field_course_id" name="field_course_id" required="require">
+                                        <select class="form-control" id="field_course_id1" name="field_course_id1" required="require">
                                           <option value="">-- เลือกหลักสูตร --</option>
                                         </select>
                                       </div>
@@ -86,7 +86,7 @@ $db = $objDb->database;
                                     <div class="col-md-6">
                                       <div class="form-group">
                                         <label>หลักสูตร</label>
-                                        <select class="form-control" id="field_course1_id" name="field_course1_id" required="require">
+                                        <select class="form-control" id="field_course_id2" name="field_course_id2" required="require">
                                           <option value="">-- เลือกหลักสูตร --</option>
                                         </select>
                                       </div>
@@ -104,16 +104,16 @@ $db = $objDb->database;
                                 </div>
                               </form><br>
                               <?php
-                              $field_course_id=$_POST['field_course_id'];
-                              $field_course1_id=$_POST['field_course1_id'];
-                              echo $field_course_id;
+                              $field_course_id1=$_POST['field_course_id1'];
+                              $field_course_id2=$_POST['field_course_id2'];
+                              echo $field_course_id1;
                               echo "<br>";
-                              echo $field_course1_id;
+                              echo $field_course_id2;
                                 if($_GET["Action"] == "Save"){?>
                                   <br><h5><center>รายวิชาที่สามารถเทียบโอนได้</center></h5><hr>
                                   <div class="row">
                                   <?php
-                                    $query = $db->prepare("SELECT * FROM subject NATURAL JOIN transfer WHERE course_id=".$_POST['field_course_id']." ");
+                                    $query = $db->prepare("SELECT * FROM subject NATURAL JOIN transfer WHERE course_id=".$_POST['field_course_id1']." ");
                                     $query->execute(); //ประมวลผลคำสั่ง sql
                                     $i=1;
                                     ?>
@@ -196,7 +196,7 @@ $db = $objDb->database;
                                   }
                               ?>
                               </div>
-                            </div><br><br>
+                            </div><br><br><br><br><br><br>
                           </div>
                     </div>
                 </div>
@@ -282,53 +282,53 @@ $db = $objDb->database;
 </script>
 
 <script type="text/javascript">
- $('#field_university_id').change(function() {
+ $('#field_university_id1').change(function() {
             var aaa=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_university_id:aaa},
+                    data: {field_university_id1:aaa},
                     url: 'ajax.php',
                     success: function(data) {
-                            $('#field_course_id').html(data);
+                            $('#field_course_id1').html(data);
                     }
             });
     });
-    $('#field_course_id').change(function() {
+    $('#field_course_id1').change(function() {
                var bbb=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_course_id:bbb},
+                       data: {field_course_id1:bbb},
                        url: 'ajax.php',
                        success: function(data) {
-                               $('#field_subject_id').html(data);
+                               $('#field_subject_id1').html(data);
                        }
                });
        });
 </script>
 <script type="text/javascript">
- $('#field_university1_id').change(function() {
+ $('#field_university_id2').change(function() {
             var xxx=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_university1_id:xxx},
+                    data: {field_university_id2:xxx},
                     url: 'ajax1.php',
                     success: function(data) {
-                            $('#field_course1_id').html(data);
+                            $('#field_course_id2').html(data);
                     }
             });
     });
-    $('#field_course1_id').change(function() {
+    $('#field_course_id2').change(function() {
                var yyy=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_course1_id:yyy},
+                       data: {field_course_id2:yyy},
                        url: 'ajax1.php',
                        success: function(data) {
-                               $('#field_subject1_id').html(data);
+                               $('#field_subject_id2').html(data);
                        }
                });
        });

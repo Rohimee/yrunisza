@@ -3,10 +3,10 @@ require_once("libs/Db.php");
 $objDb = new Db();
 $db = $objDb->database;
 
-if($_GET['field_university1_id']) {
-		$field_university1_id = isset($_GET['field_university1_id']) ? $_GET['field_university1_id'] : "";
+if($_GET['field_university_id2']) {
+		$field_university_id2 = isset($_GET['field_university_id2']) ? $_GET['field_university_id2'] : "";
 
-		$query = $db->prepare("SELECT c.*,u.* FROM course c left join university u ON c.university_id = u.university_id WHERE c.university_id='{$field_university1_id}'");
+		$query = $db->prepare("SELECT c.*,u.* FROM course c left join university u ON c.university_id = u.university_id WHERE c.university_id='{$field_university_id2}'");
 		$query->execute(); //ประมวลผลคำสั่ง sql
     ?>
     <option value="">-- เลือกหลักสูตร --</option>
@@ -20,9 +20,9 @@ if($_GET['field_university1_id']) {
 		}
 
 	}else {
-		$field_course1_id = isset($_GET['field_course1_id']) ? $_GET['field_course1_id'] : "";
+		$field_course_id2 = isset($_GET['field_course_id2']) ? $_GET['field_course_id2'] : "";
 
-		$query = $db->prepare("SELECT s.*,c.* FROM subject s left join course c ON s.course_id = c.course_id WHERE s.course_id='{$field_course1_id}'");
+		$query = $db->prepare("SELECT s.*,c.* FROM subject s left join course c ON s.course_id = c.course_id WHERE s.course_id='{$field_course_id2}'");
 		$query->execute(); //ประมวลผลคำสั่ง sql
     ?>
     <option value="">-- เลือกวิชา --</option>

@@ -81,15 +81,13 @@ $db = $objDb->database;
                       <form action="check_transfer.php?Action=Save" method="post">
                         <div class="row">
                             <div class="col-md-6">
-                              <div class="row">
-                                <label>คำอธิบายรายวิชา</label>
+                                <label>คำอธิบายรายวิชา</label><br>
                                 <textarea calss="form-control" name="field_subject_description_en" rows="9" cols="58" required="require"></textarea>
-                              </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>มหาวิทยาลัย</label>
-                                <select class="form-control" id="field_university_id" name="field_university_id" required="require">
+                                <select class="form-control" id="field_university_id1" name="field_university_id1" required="require">
                                   <option value="">-- เลือกมหาวิทยาลัย --</option>
                                   <?php
                                     $query = $db->prepare("SELECT * FROM university");
@@ -102,13 +100,13 @@ $db = $objDb->database;
                               </div>
                               <div class="form-group">
                                 <label>หลักสูตร</label>
-                                <select class="form-control" id="field_course_id" name="field_course_id" required="require">
+                                <select class="form-control" id="field_course_id1" name="field_course_id1" required="require">
                                   <option value="">-- เลือกหลักสูตร --</option>
                                 </select>
                               </div>
                               <div class="form-group">
                                 <label>วิชา</label>
-                                <select class="form-control" id="field_subject_id" name="field_subject_id" required="require">
+                                <select class="form-control" id="field_subject_id1" name="field_subject_id1" required="require">
                                   <option value="">-- เลือกวิชา --</option>
                                 </select>
                               </div>
@@ -179,16 +177,12 @@ $db = $objDb->database;
                       <form action="check_transfer.php?Action=Save1" method="post">
                         <div class="row">
                             <div class="col-md-6">
-                              <div class="row">
                                 <label>คำอธิบายรายวิชา</label>
                                 <textarea calss="form-control" name="field_subject_description_en1" rows="9" cols="58" required="require"></textarea>
-                              </div>
                             </div>
                             <div class="col-md-6">
-                              <div class="row">
                                 <label>คำอธิบายรายวิชา</label>
                                 <textarea calss="form-control" name="field_subject_description_en2" rows="9" cols="58" required="require"></textarea>
-                              </div>
                             </div>
                             <br><br><br><br><br><br><br><br><br><br><br><br>
                             <div class="col text-center">
@@ -287,53 +281,53 @@ $db = $objDb->database;
     }
 </script>
 <script type="text/javascript">
- $('#field_university_id').change(function() {
+ $('#field_university_id1').change(function() {
             var aaa=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_university_id:aaa},
+                    data: {field_university_id1:aaa},
                     url: 'ajax.php',
                     success: function(data) {
-                            $('#field_course_id').html(data);
+                            $('#field_course_id1').html(data);
                     }
             });
     });
-    $('#field_course_id').change(function() {
+    $('#field_course_id1').change(function() {
                var bbb=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_course_id:bbb},
+                       data: {field_course_id1:bbb},
                        url: 'ajax.php',
                        success: function(data) {
-                               $('#field_subject_id').html(data);
+                               $('#field_subject_id1').html(data);
                        }
                });
        });
 </script>
 <script type="text/javascript">
- $('#field_university1_id').change(function() {
+ $('#field_university_id2').change(function() {
             var xxx=$(this).val()
             $.ajax({
 
                     type: 'GET',
-                    data: {field_university1_id:xxx},
+                    data: {field_university_id2:xxx},
                     url: 'ajax1.php',
                     success: function(data) {
-                            $('#field_course1_id').html(data);
+                            $('#field_course_id2').html(data);
                     }
             });
     });
-    $('#field_course1_id').change(function() {
+    $('#field_course_id2').change(function() {
                var yyy=$(this).val()
                $.ajax({
 
                        type: 'GET',
-                       data: {field_course1_id:yyy},
+                       data: {field_course_id2:yyy},
                        url: 'ajax1.php',
                        success: function(data) {
-                               $('#field_subject1_id').html(data);
+                               $('#field_subject_id2').html(data);
                        }
                });
        });
