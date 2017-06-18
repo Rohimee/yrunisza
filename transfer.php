@@ -142,7 +142,7 @@ $db = $objDb->database;
           if($_GET["Action"] == "Save"){
           echo "<hr>";
 
-              $query = $db->prepare("SELECT * FROM subject WHERE course_id=".$_POST['field_course_id1']." ");
+              $query = $db->prepare("SELECT * FROM subject WHERE subject_id=".$_POST['field_subject_id1']." ");
               $query->execute(); //ประมวลผลคำสั่ง sql
               if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
               $objResult = $query->fetch(PDO::FETCH_ASSOC);
@@ -151,7 +151,7 @@ $db = $objDb->database;
                 $c = $objResult['subject_description_th'];
                 $d = $objResult['subject_description_eng'];
 
-                $query = $db->prepare("SELECT * FROM subject WHERE course_id=".$_POST['field_course_id2']." ");
+                $query = $db->prepare("SELECT * FROM subject WHERE subject_id=".$_POST['field_subject_id2']." ");
                 $query->execute(); //ประมวลผลคำสั่ง sql
                 if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
                 $objResult = $query->fetch(PDO::FETCH_ASSOC);
