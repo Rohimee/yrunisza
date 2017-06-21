@@ -59,6 +59,13 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
+      <?php
+        $field_subject_description_en = $_POST['field_subject_description_en'];
+        $query = $db->prepare("SELECT * FROM university NATURAL JOIN course NATURAL JOIN subject WHERE university_id=".$_POST['field_university_id1']." ");
+        $query->execute(); //ประมวลผลคำสั่ง sql
+        if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+      ?>
     <div class="col-sm-9 col-md-10 affix-content">
       <div class="container-fluid"><br>
             <ul class="nav nav-tabs justify-content-center" role="tablist">
@@ -82,13 +89,13 @@ $db = $objDb->database;
                         <div class="row">
                             <div class="col-md-6">
                                 <label>คำอธิบายรายวิชา</label><br>
-                                <textarea calss="form-control" name="field_subject_description_en" rows="9" cols="58" required="require"></textarea>
+                                <textarea calss="form-control" name="field_subject_description_en" rows="9" cols="58"><?php echo $field_subject_description_en ?></textarea>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>มหาวิทยาลัย</label>
                                 <select class="form-control" id="field_university_id1" name="field_university_id1" required="require">
-                                  <option value="">-- เลือกมหาวิทยาลัย --</option>
+                                  <option value=""><?php echo $row['university_name_th']; ?></option>
                                   <?php
                                     $query = $db->prepare("SELECT * FROM university");
                                     $query->execute(); //ประมวลผลคำสั่ง sql
@@ -101,13 +108,13 @@ $db = $objDb->database;
                               <div class="form-group">
                                 <label>หลักสูตร</label>
                                 <select class="form-control" id="field_course_id1" name="field_course_id1" required="require">
-                                  <option value="">-- เลือกหลักสูตร --</option>
+                                  <option value=""><?php echo $row['course_name_th']; ?></option>
                                 </select>
                               </div>
                               <div class="form-group">
                                 <label>วิชา</label>
                                 <select class="form-control" id="field_subject_id1" name="field_subject_id1" required="require">
-                                  <option value="">-- เลือกวิชา --</option>
+                                  <option value=""><?php echo $row['subject_name_th']; ?></option>
                                 </select>
                               </div>
                             </div>
@@ -122,7 +129,102 @@ $db = $objDb->database;
                               </button>
                             </div>
                         </div>
-                      </form>
+                      </form><br>
+                      <?php
+                      if($_GET["Action"] == "Save"){
+                          $aa = $_POST['field_subject_description_en'];
+                          $query = $db->prepare("SELECT * FROM subject");
+                          $query->execute(); //ประมวลผลคำสั่ง sql
+                          if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
+                          $objResult = $query->fetch(PDO::FETCH_ASSOC);
+                            $a = $objResult['subject_id'];
+                            $b = $objResult['subject_name_th'];
+                            $c = $objResult['subject_description_th'];
+                            $d = $objResult['subject_description_eng'];
+
+                          $number = similar_text($aa, $d, $percent);
+                          if ($percent==100) {?>
+                            <br>
+                            <div id="example-5" class="examples">
+                            <div class="cssProgress">
+                              <div class="progress2">
+                                <div class="cssProgress-bar cssProgress-success cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                  <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                                </div>
+                              </div>
+                            </div>
+                            </div><!-- @end #example-5 -->
+                            <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
+                          <?php
+                        }elseif ($percent>=80) {?>
+                          <br>
+                          <div id="example-5" class="examples">
+                          <div class="cssProgress">
+                            <div class="progress2">
+                              <div class="cssProgress-bar cssProgress-success cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          </div><!-- @end #example-5 -->
+                          <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
+                          <?php
+                        }elseif ($percent>=75) {?>
+                          <br>
+                          <div id="example-5" class="examples">
+                          <div class="cssProgress">
+                            <div class="progress2">
+                              <div class="cssProgress-bar cssProgress-warning cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          </div><!-- @end #example-5 -->
+                          <center>ปานกลาง <img src="./assets/img/warning.png" width='20px' height='20px'></center>
+                          <?php
+                        }else {?>
+                          <br>
+                          <div id="example-5" class="examples">
+                          <div class="cssProgress">
+                            <div class="progress2">
+                              <div class="cssProgress-bar cssProgress-danger cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          </div><!-- @end #example-5 -->
+                          <center>ไม่ผ่าน <img src="./assets/img/not.png" width='20px' height='20px'></center>
+                          <?php
+                          }
+                        }
+                        ?>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                      <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่ใช้เทียบ</th>
+                                      <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่เทียบ</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>
+                                        <?php
+                                          echo "<b>คำอธิบายรายวิชา</b><br>";
+                                          echo $aa;
+                                        ?>
+                                      </td>
+                                      <td>
+                                        <?php
+                                          echo "<b>คำอธิบายรายวิชา</b><br>";
+                                          echo $d."<br>";
+                                        ?>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
                       <br><br><br><br><br>
                       <!-- Start class="footer" -->
                       <footer class="footer">

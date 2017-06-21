@@ -59,6 +59,18 @@ $db = $objDb->database;
             </nav>
           </div>
       </div>
+      <?php
+        $query = $db->prepare("SELECT * FROM university NATURAL JOIN course NATURAL JOIN subject WHERE university_id=".$_POST['field_university_id1']." ");
+        $query->execute(); //ประมวลผลคำสั่ง sql
+        if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+
+        $query = $db->prepare("SELECT * FROM university NATURAL JOIN course NATURAL JOIN subject WHERE university_id=".$_POST['field_university_id2']." ");
+        $query->execute(); //ประมวลผลคำสั่ง sql
+        if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
+        $row1 = $query->fetch(PDO::FETCH_ASSOC);
+
+      ?>
     <div class="col-sm-9 col-md-10 affix-content">
       <div class="container"><br><br>
         <font size="5">เทียบโอนหน่วยกิต</font> <hr><br>
@@ -68,7 +80,7 @@ $db = $objDb->database;
                 <div class="form-group">
                   <label>มหาวิทยาลัย</label>
                   <select class="form-control" id="field_university_id1" name="field_university_id1" required="require">
-                    <option value="">-- เลือกมหาวิทยาลัย --</option>
+                    <option value=""><?php echo $row['university_name_th']; ?></option>
                     <?php
                       $query = $db->prepare("SELECT * FROM university");
                       $query->execute(); //ประมวลผลคำสั่ง sql
@@ -83,7 +95,7 @@ $db = $objDb->database;
                 <div class="form-group">
                   <label>มหาวิทยาลัย</label>
                   <select class="form-control" id="field_university_id2" name="field_university_id2" required="require">
-                    <option value="">-- เลือกมหาวิทยาลัย --</option>
+                    <option value=""><?php echo $row1['university_name_th']; ?></option>
                     <?php
                       $query = $db->prepare("SELECT * FROM university");
                       $query->execute(); //ประมวลผลคำสั่ง sql
@@ -98,7 +110,7 @@ $db = $objDb->database;
                 <div class="form-group">
                   <label>หลักสูตร</label>
                   <select class="form-control" id="field_course_id1" name="field_course_id1" required="require">
-                    <option value="">-- เลือกหลักสูตร --</option>
+                    <option value=""><?php echo $row['course_name_th']; ?></option>
                   </select>
                 </div>
               </div>
@@ -106,7 +118,7 @@ $db = $objDb->database;
                 <div class="form-group">
                   <label>หลักสูตร</label>
                   <select class="form-control" id="field_course_id2" name="field_course_id2" required="require">
-                    <option value="">-- เลือกหลักสูตร --</option>
+                    <option value=""><?php echo $row1['course_name_th']; ?></option>
                   </select>
                 </div>
               </div>
@@ -114,7 +126,7 @@ $db = $objDb->database;
                 <div class="form-group">
                   <label>วิชา</label>
                   <select class="form-control" id="field_subject_id1" name="field_subject_id1" required="require">
-                    <option value="">-- เลือกวิชา --</option>
+                    <option value=""><?php echo $row['subject_name_th']; ?></option>
                   </select>
                 </div>
               </div>
@@ -122,7 +134,7 @@ $db = $objDb->database;
                 <div class="form-group">
                   <label>วิชา</label>
                   <select class="form-control" id="field_subject_id2" name="field_subject_id2" required="require">
-                    <option value="">-- เลือกวิชา --</option>
+                    <option value=""><?php echo $row1['subject_name_th']; ?></option>
                   </select>
                 </div>
               </div>
@@ -142,7 +154,7 @@ $db = $objDb->database;
           if($_GET["Action"] == "Save"){
           echo "<hr>";
 
-              $query = $db->prepare("SELECT * FROM subject WHERE subject_id=".$_POST['field_subject_id1']." ");
+              $query = $db->prepare("SELECT * FROM subject WHERE course_id=".$_POST['field_course_id1']." ");
               $query->execute(); //ประมวลผลคำสั่ง sql
               if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
               $objResult = $query->fetch(PDO::FETCH_ASSOC);
@@ -151,7 +163,7 @@ $db = $objDb->database;
                 $c = $objResult['subject_description_th'];
                 $d = $objResult['subject_description_eng'];
 
-                $query = $db->prepare("SELECT * FROM subject WHERE subject_id=".$_POST['field_subject_id2']." ");
+                $query = $db->prepare("SELECT * FROM subject WHERE course_id=".$_POST['field_course_id2']." ");
                 $query->execute(); //ประมวลผลคำสั่ง sql
                 if($query->rowCount() > 0); //rowCount เช็คจำนวนแถวที่ได้มา
                 $objResult = $query->fetch(PDO::FETCH_ASSOC);

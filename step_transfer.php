@@ -58,29 +58,29 @@
           <div class="row">
             <div class="form-group">
               <label><b>เทียบโอนรายวิชา</b></label>
-              <img src="./assets/img/img1.png" width="1000" height="500"/>
-            </div><br>
+              <img src="./assets/img/transfer1.png" width="1000" height="430"/>
+            </div><br><br>
             <div class="form-group">
               <label><b>ผลการเทียบโอน</b></label>
-              <img src="./assets/img/img2.png" width="1000" height="500"/>
-            </div><br>
+              <img src="./assets/img/transfer2.png" width="1000" height="430"/>
+            </div><br><br>
             <div class="form-group">
               <label><b>เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชาในหลักสูตร</b></label>
-              <img src="./assets/img/img3.png" width="1000" height="500"/>
-            </div><br>
+              <img src="./assets/img/transfer3.png" width="1000" height="430"/>
+            </div><br><br>
             <div class="form-group">
               <label><b>ผลการเทียบโอน</b></label>
-              <img src="./assets/img/img4.png" width="1000" height="500"/>
-            </div><br>
+              <img src="./assets/img/transfer4.png" width="1000" height="430"/>
+            </div><br><br>
             <div class="form-group">
               <label><b>เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชา</b></label>
-              <img src="./assets/img/img5.png" width="1000" height="500"/>
-            </div><br>
+              <img src="./assets/img/transfer5.png" width="1000" height="430"/>
+            </div><br><br>
             <div class="form-group">
               <label><b>ผลการเทียบโอน</b></label>
-              <img src="./assets/img/img6.png" width="1000" height="500"/>
+              <img src="./assets/img/transfer6.png" width="1000" height="430"/>
             </div>
-          </div>
+          </div><br><br><br><br>
         <!-- Start class="footer" -->
         <footer class="footer">
             <div class="container">

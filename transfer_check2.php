@@ -63,12 +63,12 @@ $db = $objDb->database;
       <div class="container-fluid"><br>
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#transfer1" role="tab">
+                    <a class="nav-link" data-toggle="tab" href="#transfer1" role="tab">
                         <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> เทียบคำอธิบายรายวิชา กับ คำอธิบายในหลักสูตร</font>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                    <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">
                         <font style="color:#0c0c0d"><i class="now-ui-icons files_single-copy-04"></i> เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชา</font>
                     </a>
                 </li>
@@ -76,7 +76,7 @@ $db = $objDb->database;
             <div class="card-block">
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div class="tab-pane active" id="transfer1" role="tabpanel">
+                    <div class="tab-pane" id="transfer1" role="tabpanel">
                       <font size="5">เทียบคำอธิบายรายวิชา กับ คำอธิบายในหลักสูตร</font> <hr><br>
                       <form action="transfer_check1.php?Action=Save" method="post">
                         <div class="row">
@@ -172,17 +172,22 @@ $db = $objDb->database;
                       </footer>
                       <!-- End class="footer" -->
                     </div>
-                    <div class="tab-pane" id="profile" role="tabpanel">
+
+                    <?php
+                      $field_subject_description_en1 = $_POST['field_subject_description_en1'];
+                      $field_subject_description_en2 = $_POST['field_subject_description_en2'];
+                    ?>
+                    <div class="tab-pane active" id="profile" role="tabpanel">
                       <font size="5">เทียบคำอธิบายรายวิชา กับ คำอธิบายรายวิชา</font> <hr><br>
                       <form action="transfer_check2.php?Action=Save" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <label>คำอธิบายรายวิชา</label>
-                                <textarea calss="form-control" name="field_subject_description_en1" rows="9" cols="58" required="require"></textarea>
+                                <textarea calss="form-control" name="field_subject_description_en1" rows="9" cols="58" required="require"><?php echo $field_subject_description_en1; ?></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label>คำอธิบายรายวิชา</label>
-                                <textarea calss="form-control" name="field_subject_description_en2" rows="9" cols="58" required="require"></textarea>
+                                <textarea calss="form-control" name="field_subject_description_en2" rows="9" cols="58" required="require"><?php echo $field_subject_description_en2; ?></textarea>
                             </div>
                             <br><br><br><br><br><br><br><br><br><br><br><br>
                             <div class="col text-center">
@@ -194,7 +199,96 @@ $db = $objDb->database;
                               </button>
                             </div>
                         </div>
-                      </form>
+                      </form><br>
+                      <?php
+
+                      if($_GET["Action"] == "Save"){
+                        $field_subject_description_th1 = $_POST['field_subject_description_en1'];
+                        $field_subject_description_th2 = $_POST['field_subject_description_en2'];
+
+                          $number = similar_text($field_subject_description_th1, $field_subject_description_th2, $percent);
+                          if ($percent==100) {?>
+                            <br>
+                            <div id="example-5" class="examples">
+                            <div class="cssProgress">
+                              <div class="progress2">
+                                <div class="cssProgress-bar cssProgress-success cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                  <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                                </div>
+                              </div>
+                            </div>
+                            </div><!-- @end #example-5 -->
+                            <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
+                          <?php
+                        }elseif ($percent>=80) {?>
+                          <br>
+                          <div id="example-5" class="examples">
+                          <div class="cssProgress">
+                            <div class="progress2">
+                              <div class="cssProgress-bar cssProgress-success cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          </div><!-- @end #example-5 -->
+                          <center>ผ่าน <img src="./assets/img/success.png" width='20px' height='20px'></center>
+                          <?php
+                        }elseif ($percent>=75) {?>
+                          <br>
+                          <div id="example-5" class="examples">
+                          <div class="cssProgress">
+                            <div class="progress2">
+                              <div class="cssProgress-bar cssProgress-warning cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          </div><!-- @end #example-5 -->
+                          <center>ปานกลาง <img src="./assets/img/warning.png" width='20px' height='20px'></center>
+                          <?php
+                        }else {?>
+                          <br>
+                          <div id="example-5" class="examples">
+                          <div class="cssProgress">
+                            <div class="progress2">
+                              <div class="cssProgress-bar cssProgress-danger cssProgress-active" data-percent="<?php echo (int)$percent; ?>" style="width: <?php echo (int)$percent."%"; ?>;">
+                                <span class="cssProgress-label"><?php echo (int)$percent."%"; ?></span>
+                              </div>
+                            </div>
+                          </div>
+                          </div><!-- @end #example-5 -->
+                          <center>ไม่ผ่าน <img src="./assets/img/not.png" width='20px' height='20px'></center>
+                          <?php
+                          }
+                        }
+                    ?>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                  <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่ใช้เทียบ</th>
+                                  <th class="text-center" width="1000">คำอธิบายรายวิชาในหลักสูตรที่เทียบ</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td>
+                                    <?php
+                                      echo "<b>คำอธิบายรายวิชา</b><br>";
+                                      echo "&nbsp &nbsp &nbsp &nbsp".$field_subject_description_th1;
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <?php
+                                      echo "<b>คำอธิบายรายวิชา</b><br>";
+                                      echo "&nbsp &nbsp &nbsp &nbsp".$field_subject_description_th2;
+                                    ?>
+                                  </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                       <br><br><br><br><br>
                       <!-- Start class="footer" -->

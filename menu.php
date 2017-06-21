@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">
+                    <a class="nav-link" href="contact.php" rel="tooltip" title="ข้อมูลสำหรับติดต่อสถาบัน" data-placement="bottom">
                         <i class="now-ui-icons tech_mobile"></i>
                         <p><font size="2">ติดต่อเรา</font></p>
                     </a>
