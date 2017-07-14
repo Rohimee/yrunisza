@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2017 at 10:45 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Jul 14, 2017 at 06:39 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -59,7 +59,7 @@ CREATE TABLE `member` (
   `member_email` varchar(30) NOT NULL,
   `member_address` varchar(255) NOT NULL,
   `member_position` int(2) NOT NULL,
-  `member_password` varchar(20) NOT NULL,
+  `member_password` varchar(255) NOT NULL,
   `member_verified` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -68,17 +68,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `university_id`, `course_id`, `member_name`, `member_lastname`, `member_tel`, `member_email`, `member_address`, `member_position`, `member_password`, `member_verified`) VALUES
-(1, 1, 1, 'นายมูฮามะฟาอิส', 'จูเปาะ', '0908673624', 'mfaiz5605@gmail.com', 'Narathiwat', 1, '111', 1),
-(2, 1, 1, 'นาย ก', 'นาย ข', '0999999999', 'aaa@gmail.com', 'Narathiwat', 2, '111', 1),
-(3, 1, 1, 'นาย ข ', 'นาย ก', '1111111111', 'qqq@gmail.com', 'Thailand', 2, '111', 1),
-(4, 2, 2, 'Mr.Muhammadfaiz', 'Mohamedbastamam', '0909090909', 'faiz5605@gmail.com', 'Malaysia', 1, '111', 1),
-(5, 1, 3, 'Faiz', 'Bastamam', '0911111111', 'faiz@gmail.com', 'Narathiwat', 1, '111', 1),
-(6, 1, 1, 'aaa', 'aaa', '0000', 'zzz@gmail.com', 'aaa', 2, '111', 2),
-(7, 2, 2, 'Mr.Rohimee', 'Dueramae', '0909090909', 'mee@gmail.com', 'Pattani', 2, '111', 1),
-(8, 1, 1, 'นาย ค', 'นาย ง', '022222222', 'www@gmail.com', 'World', 2, '111', 1),
-(9, 1, 1, 'faiz', 'bas', '09392911', 'faiz@hotmail.com', 'Narathiwat', 2, '111', 1),
-(10, 1, 1, 'faiz', 'azif', '1212121212', 'eee@gmail.com', 'Narathiwat', 2, '111', 0),
-(11, 3, 4, 'นายฮามีซี', 'สะนิ', '0211212123', 'see@gmail.com', 'Songkhla', 1, '111', 1);
+(1, 1, 1, 'นายมูฮามะฟาอิส', 'จูเปาะ', '0908673624', 'mfaiz5605@gmail.com', 'Narathiwat', 1, '698d51a19d8a121ce581499d7b701668', 1),
+(2, 1, 1, 'Rohimee', 'Dueramae', '0807019071', 'mee@gmail.com', '1', 2, '698d51a19d8a121ce581499d7b701668', 1);
 
 -- --------------------------------------------------------
 
@@ -105,8 +96,82 @@ INSERT INTO `subject` (`subject_id`, `course_id`, `subject_name_th`, `subject_na
 ('4111248', 1, 'ปฏิบัติการทางวิทยาการคอมพิวเตอร์', 'Practicing Of Computer Science', 'ปฏิบัติการพื้นฐานทางวิทยาการคอมพิวเตอร์ ฝึกทักษะตามกิจกรรมที่กำหนด', 'Practicing and operating in computer science, skill improvement based on assigned activities.', 1),
 ('CSF11103', 2, 'Penyelesaian Masalah Dan Pengaturcaraan Komputer', 'Problem Solving And Computer Programming', 'Perkara ini adalah satu siri studio intensif dan dinamik dalam Seni Visual diajar oleh artis amalan profesional. Studio-studio yang ditawarkan akan berbeza-beza bergantung pada medan yang pensyarah kepakaran dan ketersediaan. Contoh bengkel pelajarannya ialah Lukisan, Seni Cetak dan Lukisan. Tujuan subjek ini adalah untuk memperkenalkan pelajar kepada pelbagai studio yang membangunkan kemahiran teknikal dan potensi kreatif setiap pelajar. Studio-studio yang ditawarkan setiap sesi akan diiklankan di dalam pangkalan data subjek, terbuka kepada pelajar-pelajar dari seluruh universiti dan tidak memerlukan pengetahuan yang diperlukan. Walaupun bengkel ini direka untuk memperkenalkan pelajar kepada Seni Visual mereka juga akan membolehkan pelajar yang telah menamatkan CAVA111 dan / atau CAVA112 peluang untuk membangunkan lagi kemahiran teknikal mereka.', 'This subject is a series of intensive and dynamic studios in the Visual Arts taught by professional practicing artists. The studios offered will vary depending on the lecturers’ fields of expertise and availability. Examples of the workshops taught include Drawing, Printmaking and Painting. The aim of the subject is to introduce students to various studios that develop the technical skills and creative potential of each student. The studios being offered each session will be advertised on the subject database, open to students from across the university and require no requisite knowledge. Whilst these workshops are designed to introduce students to the Visual Arts they will also enable students who have completed CAVA111 and/or CAVA112 the opportunity to further develop their technical skills.', 3),
 ('CSF11203', 2, 'Organisasi Komputer dan Seni Bina', 'Computer Organization And Architecture', 'Anda akan belajar mata pelajaran dalam Computational Intelligence, Persepsi dan Perancangan, dan penalaran dan Pembelajaran. Anda akan dapat untuk meletakkan teori ke dalam amalan dengan projek capstone individu.', 'You will study subjects in Computational Intelligence, Perception and Planning, and Reasoning and Learning. You will be able to put theory into practice with an individual capstone project.', 3),
-('วพ201', 4, 'โครงสร้างข้อมูลและขั้นตอนวิธี 1', 'Data Structures and Algorithms I', 'การวิเคราะห์ความซับซ้อนของขั้นตอนวิธี ขั้นตอนวิธีพื้นฐานสาหรับการจัดเรียงข้อมูล ชนิดข้อมูลแบบนามธรรม ดิกชันนารี ขั้นตอนวิธีสาหรับการค้นหาข้อมูล กองซ้อน แถวคอย รายการ การเขียนโปรแกรมแบบเรียกซ้า ต้นไม้ค้นหาแบบทวิภาค', 'Analysis of algorithm complexity Basic algorithms for defragmentation. Abstract data type dictionary algorithm for finding stack data queues; Binary search tree', 3),
-('วพ210', 4, 'การออกแบบวงจรดิจิตอล', 'Digital Circuits Design', 'ระบบจานวน รหัส พีชคณิตบูลีน โลจิกเกต หลักในการออกแบบวงจรโลจิกแบบคอมไบเนชั่นนอลและแบบซีเควนเชียล (ทั้งวงจรซิงโครนัสและวงจรอะซิงโครนัส) สาหรับการสร้างเป็นวงจรจริงเริ่มตั้งแต่วงจรเกตพื้นฐานจนถึงการใช้อุปกรณ์พีแอลดี', 'Number System Boolean Logic Algebraic Number System for Logical and Combinational Logic Design. (Both synchronous and asynchronous) for the creation of real circuits, starting from basic circuit boards to using PLD devices.', 3);
+('วพ.201', 4, 'โครงสร้างข้อมูลและขั้นตอนวิธี 1', 'Data Structures and Algorithms I', 'การวิเคราะห์ความซับซ้อนของขั้นตอนวิธี ขั้นตอนวิธีพื้นฐานสาหรับการจัดเรียงข้อมูล ชนิดข้อมูลแบบนามธรรม ดิกชันนารี ขั้นตอนวิธีสาหรับการค้นหาข้อมูล กองซ้อน แถวคอย รายการ การเขียนโปรแกรมแบบเรียกซ้า ต้นไม้ค้นหาแบบทวิภาค', 'Analysis of algorithm complexity Basic algorithms for defragmentation. Abstract data type dictionary algorithm for finding stack data queues; Binary search tree', 3),
+('วพ.210', 4, 'การออกแบบวงจรดิจิตอล', 'Digital Circuits Design', 'ระบบจานวน รหัส พีชคณิตบูลีน โลจิกเกต หลักในการออกแบบวงจรโลจิกแบบคอมไบเนชั่นนอลและแบบซีเควนเชียล (ทั้งวงจรซิงโครนัสและวงจรอะซิงโครนัส) สาหรับการสร้างเป็นวงจรจริงเริ่มตั้งแต่วงจรเกตพื้นฐานจนถึงการใช้อุปกรณ์พีแอลดี', 'Number System Boolean Logic Algebraic Number System for Logical and Combinational Logic Design. (Both synchronous and asynchronous) for the creation of real circuits, starting from basic circuit boards to using PLD devices.', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_answer`
+--
+
+CREATE TABLE `tb_answer` (
+  `id` int(11) NOT NULL,
+  `id_person` int(11) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  `score` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_answer`
+--
+
+INSERT INTO `tb_answer` (`id`, `id_person`, `id_question`, `score`) VALUES
+(1, 1, 1, 5),
+(2, 1, 2, 4),
+(3, 1, 3, 4),
+(4, 1, 4, 3),
+(5, 1, 5, 1),
+(6, 2, 1, 4),
+(7, 2, 2, 3),
+(8, 2, 3, 4),
+(9, 2, 4, 4),
+(10, 2, 5, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_person`
+--
+
+CREATE TABLE `tb_person` (
+  `id_person` int(11) NOT NULL,
+  `created` varchar(30) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `education` varchar(50) NOT NULL,
+  `age` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_person`
+--
+
+INSERT INTO `tb_person` (`id_person`, `created`, `gender`, `education`, `age`, `status`) VALUES
+(1, '14-07-2017 18:28:15', 'ชาย', 'สูงกว่าปริญญาตรี', 'อายุระหว่าง 31 - 40 ปี', 'ผู้บริหาร'),
+(2, '14-07-2017 18:31:21', 'หญิง', 'มัธยมศึกษาตอนต้น/ตอนปลาย/เทียบเท่า', 'อายุ ต่ำกว่า 20 ปี', 'นักเรียน/นักศึกษา');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_question`
+--
+
+CREATE TABLE `tb_question` (
+  `id_question` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_question`
+--
+
+INSERT INTO `tb_question` (`id_question`, `question`) VALUES
+(1, 'aaa'),
+(2, 'bbb'),
+(3, 'ccc'),
+(4, 'ddd'),
+(5, 'eee');
 
 -- --------------------------------------------------------
 
@@ -118,7 +183,9 @@ CREATE TABLE `transfer` (
   `transfer_id` int(10) NOT NULL,
   `selector_id` int(10) NOT NULL,
   `subject_id1` varchar(10) NOT NULL,
+  `university_id1` int(10) NOT NULL,
   `subject_id2` varchar(10) NOT NULL,
+  `university_id2` int(10) NOT NULL,
   `transfer_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
@@ -126,13 +193,8 @@ CREATE TABLE `transfer` (
 -- Dumping data for table `transfer`
 --
 
-INSERT INTO `transfer` (`transfer_id`, `selector_id`, `subject_id1`, `subject_id2`, `transfer_status`) VALUES
-(1, 1, '4111244', 'CSF11203', 1),
-(2, 1, '4111248', 'CSF11103', 0),
-(3, 1, '4111244', 'CSF11103', 0),
-(4, 1, '4111244', 'CSF11203', 1),
-(5, 4, 'CSF11203', '4111248', 1),
-(6, 1, '4111244', 'วพ201', 1);
+INSERT INTO `transfer` (`transfer_id`, `selector_id`, `subject_id1`, `university_id1`, `subject_id2`, `university_id2`, `transfer_status`) VALUES
+(1, 1, '4111244', 1, 'CSF11103', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -152,22 +214,7 @@ CREATE TABLE `transfer_detail` (
 --
 
 INSERT INTO `transfer_detail` (`td_id`, `transfer_id`, `member_id`, `td_status`) VALUES
-(1, 1, 2, 0),
-(2, 1, 3, 0),
-(3, 1, 8, 0),
-(4, 2, 8, 0),
-(5, 2, 9, 0),
-(6, 2, 5, 0),
-(7, 3, 2, 0),
-(8, 3, 8, 0),
-(9, 3, 5, 0),
-(10, 4, 2, 0),
-(11, 4, 9, 0),
-(12, 4, 5, 0),
-(13, 5, 7, 0),
-(14, 6, 2, 0),
-(15, 6, 3, 0),
-(16, 6, 8, 0);
+(1, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -219,6 +266,24 @@ ALTER TABLE `subject`
   ADD KEY `course_id` (`course_id`);
 
 --
+-- Indexes for table `tb_answer`
+--
+ALTER TABLE `tb_answer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_person`
+--
+ALTER TABLE `tb_person`
+  ADD PRIMARY KEY (`id_person`);
+
+--
+-- Indexes for table `tb_question`
+--
+ALTER TABLE `tb_question`
+  ADD PRIMARY KEY (`id_question`);
+
+--
 -- Indexes for table `transfer`
 --
 ALTER TABLE `transfer`
@@ -253,17 +318,32 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `member_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tb_answer`
+--
+ALTER TABLE `tb_answer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `tb_person`
+--
+ALTER TABLE `tb_person`
+  MODIFY `id_person` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tb_question`
+--
+ALTER TABLE `tb_question`
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `transfer`
 --
 ALTER TABLE `transfer`
-  MODIFY `transfer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `transfer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `transfer_detail`
 --
 ALTER TABLE `transfer_detail`
-  MODIFY `td_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `td_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `university`
 --
@@ -289,8 +369,8 @@ ALTER TABLE `subject`
 -- Constraints for table `transfer`
 --
 ALTER TABLE `transfer`
-  ADD CONSTRAINT `transfer_ibfk_2` FOREIGN KEY (`subject_id1`) REFERENCES `subject` (`subject_id`),
-  ADD CONSTRAINT `transfer_ibfk_3` FOREIGN KEY (`subject_id2`) REFERENCES `subject` (`subject_id`);
+  ADD CONSTRAINT `transfer_ibfk_1` FOREIGN KEY (`subject_id1`) REFERENCES `subject` (`subject_id`),
+  ADD CONSTRAINT `transfer_ibfk_2` FOREIGN KEY (`subject_id2`) REFERENCES `subject` (`subject_id`);
 
 --
 -- Constraints for table `transfer_detail`
