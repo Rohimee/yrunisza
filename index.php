@@ -76,6 +76,24 @@
                           <p><font size="2">ติดต่อเรา</font></p>
                       </a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="questionnaire_add.php" rel="tooltip" title="ทำแบบสอบถาม" data-placement="bottom">
+                          <i class="now-ui-icons ui-1_simple-add"></i>
+                          <p><font size="2">เพิ่มแบบสอบถาม</font></p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="questionnaire.php" rel="tooltip" title="ทำแบบสอบถาม" data-placement="bottom">
+                          <i class="now-ui-icons files_paper"></i>
+                          <p><font size="2">แบบสอบถาม</font></p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="questionnaire_show.php" rel="tooltip" title="ทำแบบสอบถาม" data-placement="bottom">
+                          <i class="now-ui-icons education_agenda-bookmark"></i>
+                          <p><font size="2">ผลสรุปแบบสอบถาม</font></p>
+                      </a>
+                  </li>
                   <!--<li class="nav-item">
                       <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                           <i class="fa fa-twitter"></i>

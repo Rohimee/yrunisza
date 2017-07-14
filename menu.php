@@ -48,6 +48,12 @@
                         <p><font size="2">ติดต่อเรา</font></p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="questionnaire.php" rel="tooltip" title="ทำแบบสอบถาม" data-placement="bottom">
+                        <i class="now-ui-icons files_paper"></i>
+                        <p><font size="2">แบบสอบถาม</font></p>
+                    </a>
+                </li>
                 <!--<li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                         <i class="fa fa-twitter"></i>
